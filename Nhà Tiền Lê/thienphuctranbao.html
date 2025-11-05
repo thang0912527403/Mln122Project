@@ -1,9 +1,10 @@
 <!DOCTYPE html>
 <html lang="vi">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Ngũ thù - Chi tiết</title>
+    <title>Thiên phúc trấn bảo - Chi tiết</title>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.1/font/bootstrap-icons.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
@@ -16,7 +17,7 @@
             position: relative;
             padding: 2rem 0;
         }
-        
+
         body::before {
             content: '';
             position: absolute;
@@ -27,13 +28,13 @@
             background: rgba(0, 0, 0, 0.5);
             z-index: 0;
         }
-        
+
         .container {
             position: relative;
             z-index: 1;
             max-width: 1200px;
         }
-        
+
         .back-button {
             background: white;
             color: #DAA520;
@@ -47,64 +48,64 @@
             gap: 0.5rem;
             transition: all 0.3s ease;
             margin-bottom: 2rem;
-            box-shadow: 0 4px 15px rgba(0,0,0,0.2);
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
         }
-        
+
         .back-button:hover {
             transform: translateY(-2px);
-            box-shadow: 0 6px 20px rgba(0,0,0,0.3);
+            box-shadow: 0 6px 20px rgba(0, 0, 0, 0.3);
             color: #DAA520;
         }
-        
+
         .detail-container {
             background: white;
             border-radius: 20px;
             overflow: hidden;
-            box-shadow: 0 10px 40px rgba(0,0,0,0.3);
+            box-shadow: 0 10px 40px rgba(0, 0, 0, 0.3);
             animation: fadeInUp 0.8s ease-out;
         }
-        
+
         .header-section {
             background: linear-gradient(135deg, #DAA520 0%, #FFD700 100%);
             padding: 2.5rem;
             color: white;
         }
-        
+
         .header-section h1 {
             font-size: 2.5rem;
             font-weight: 700;
             margin-bottom: 0.5rem;
-            text-shadow: 2px 2px 4px rgba(0,0,0,0.2);
+            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.2);
         }
-        
+
         .header-section .chinese-name {
             font-size: 1.8rem;
             margin-bottom: 1rem;
             opacity: 0.95;
         }
-        
+
         .header-section .dynasty {
             font-size: 1.1rem;
             opacity: 0.9;
         }
-        
+
         .content-section {
             display: grid;
             grid-template-columns: 1fr 1fr;
             gap: 2rem;
             padding: 2.5rem;
         }
-        
+
         .image-section {
             position: sticky;
             top: 2rem;
             height: fit-content;
         }
-        
+
         .main-image {
             width: 100%;
             border-radius: 15px;
-            box-shadow: 0 5px 20px rgba(0,0,0,0.2);
+            box-shadow: 0 5px 20px rgba(0, 0, 0, 0.2);
             background: linear-gradient(135deg, #f5f5f5 0%, #e0e0e0 100%);
             min-height: 400px;
             display: flex;
@@ -113,20 +114,20 @@
             font-size: 5rem;
             color: #ccc;
         }
-        
+
         .main-image img {
             width: 100%;
             height: auto;
             border-radius: 15px;
         }
-        
+
         .image-gallery {
             display: grid;
             grid-template-columns: repeat(3, 1fr);
             gap: 1rem;
             margin-top: 1rem;
         }
-        
+
         .thumbnail {
             width: 100%;
             aspect-ratio: 1;
@@ -137,12 +138,12 @@
             border: 3px solid transparent;
             background: linear-gradient(135deg, #f5f5f5 0%, #e0e0e0 100%);
         }
-        
+
         .thumbnail:hover {
             border-color: #DAA520;
             transform: scale(1.05);
         }
-        
+
         .info-section h2 {
             color: #DAA520;
             font-size: 1.8rem;
@@ -151,11 +152,11 @@
             border-bottom: 3px solid #DAA520;
             padding-bottom: 0.5rem;
         }
-        
+
         .info-item {
             margin-bottom: 1.5rem;
         }
-        
+
         .info-label {
             font-weight: 700;
             color: #333;
@@ -165,33 +166,33 @@
             align-items: center;
             gap: 0.5rem;
         }
-        
+
         .info-label i {
             color: #DAA520;
             width: 24px;
         }
-        
+
         .info-value {
             color: #555;
             font-size: 1rem;
             line-height: 1.8;
             padding-left: 2rem;
         }
-        
+
         .specs-grid {
             display: grid;
             grid-template-columns: repeat(2, 1fr);
             gap: 1rem;
             margin-top: 1rem;
         }
-        
+
         .spec-card {
             background: linear-gradient(135deg, #f8f9fa 0%, #e9ecef 100%);
             padding: 1rem;
             border-radius: 10px;
             border-left: 4px solid #DAA520;
         }
-        
+
         .spec-label {
             font-size: 0.85rem;
             color: #666;
@@ -201,17 +202,17 @@
             align-items: center;
             gap: 0.5rem;
         }
-        
+
         .spec-label i {
             color: #DAA520;
         }
-        
+
         .spec-value {
             font-size: 1.1rem;
             color: #333;
             font-weight: 700;
         }
-        
+
         .description-box {
             background: linear-gradient(135deg, rgba(218, 165, 32, 0.1) 0%, rgba(255, 215, 0, 0.1) 100%);
             padding: 1.5rem;
@@ -219,142 +220,162 @@
             border-left: 4px solid #DAA520;
             margin-top: 1.5rem;
         }
-        
+
         .description-box p {
             margin: 0;
             line-height: 1.8;
             color: #555;
         }
-        
+
         .rarity-stars {
             color: #FFD700;
             font-size: 1.2rem;
         }
-        
+
         @keyframes fadeInUp {
             from {
                 opacity: 0;
                 transform: translateY(30px);
             }
+
             to {
                 opacity: 1;
                 transform: translateY(0);
             }
         }
-        
+
         @media (max-width: 992px) {
             .content-section {
                 grid-template-columns: 1fr;
             }
-            
+
             .image-section {
                 position: relative;
                 top: 0;
             }
-            
+
             .header-section h1 {
                 font-size: 2rem;
             }
-            
+
             .header-section .chinese-name {
                 font-size: 1.5rem;
             }
-            
+
             .specs-grid {
                 grid-template-columns: 1fr;
             }
         }
     </style>
 </head>
+
 <body>
     <div class="container">
-        <a href="nhatrieu.html" class="back-button">
+        <a href="nhatienle.html" class="back-button">
             <i class="fas fa-arrow-left"></i> Quay lại danh sách
         </a>
-         <a href="../index.html" class="back-button" style="margin-left: 53rem;">
+        <a href="../index.html" class="back-button" style="margin-left: 53rem;">
             <i class="bi bi-arrow-left-circle"></i> Home
         </a>
         <div class="detail-container">
             <div class="header-section">
-                <h1>Ngũ Thù</h1>
-                <div class="chinese-name">五銖</div>
-                <div class="dynasty"><i class="fas fa-landmark"></i> Tiền tệ Trung Quốc</div>
+                <h1>Thiên phúc trấn bảo</h1>
+                <div class="chinese-name">天福鎮寶</div>
+                <div class="dynasty"><i class="fas fa-landmark"></i> Tiền tệ nhà Tiền Lê</div>
             </div>
-            
+
             <div class="content-section">
                 <!-- Image Section -->
                 <div class="image-section">
                     <div class="main-image">
-                        <img src="/image/ngũ thù/nguthu.jpg" alt="Ngũ thù   " onerror="this.parentElement.innerHTML='<i class=\'fas fa-coins\'></i>'">
+                        <img src="/image/thiên phúc trấn bảo/thienphuctranbao.jpg" alt="Thiên phúc trấn bảo"
+                            onerror="this.parentElement.innerHTML='<i class=\'fas fa-coins\'></i>'">
                     </div>
                     <div class="image-gallery">
-                        <img src="/image/currency/thuan-thien-nguyen-bao-2.jpg" alt="Mặt sau" class="thumbnail" onerror="this.style.display='none'" onclick="swapImage(this)">
-                        <img src="/image/currency/thuan-thien-nguyen-bao-3.jpg" alt="Chi tiết" class="thumbnail" onerror="this.style.display='none'" onclick="swapImage(this)">
-                        <img src="/image/currency/thuan-thien-nguyen-bao-4.jpg" alt="So sánh" class="thumbnail" onerror="this.style.display='none'" onclick="swapImage(this)">
+                        <img src="/image/currency/thuan-thien-nguyen-bao-2.jpg" alt="Mặt sau" class="thumbnail"
+                            onerror="this.style.display='none'" onclick="swapImage(this)">
+                        <img src="/image/currency/thuan-thien-nguyen-bao-3.jpg" alt="Chi tiết" class="thumbnail"
+                            onerror="this.style.display='none'" onclick="swapImage(this)">
+                        <img src="/image/currency/thuan-thien-nguyen-bao-4.jpg" alt="So sánh" class="thumbnail"
+                            onerror="this.style.display='none'" onclick="swapImage(this)">
                     </div>
                 </div>
-                
+
                 <!-- Info Section -->
                 <div class="info-section">
                     <h2><i class="fas fa-info-circle"></i> Thông tin chi tiết</h2>
-                    
+
                     <div class="info-item">
                         <div class="info-label">
                             <i class="fas fa-calendar-alt"></i>
                             Thời kỳ đúc
                         </div>
                         <div class="info-value">
-                            Tiền Ngũ Thù (五銖) khởi đúc từ đời Hán Vũ Đế (năm 118 TCN), lưu hành suốt hơn 700 năm qua các triều Hán – Ngụy – Tấn – Nam Bắc triều.
+                            Đúc và lưu hành dưới đời vua Lê Đại Hành triều đại nhà Tiền Lê.
                         </div>
                     </div>
-                    
+
                     <div class="info-item">
                         <div class="info-label">
                             <i class="fas fa-ruler-combined"></i>
                             Thông số kỹ thuật
                         </div>
                         <div class="info-value">
-                            Đồng tiền tròn, lỗ vuông giữa, đúc bằng đồng xanh, hình thức chuẩn mực của tiền tệ cổ Trung Hoa.
-                            Trọng lượng trung bình khoảng 3,2 – 4,0 gram, đường kính từ 2,3 – 2,5 cm. Viền ngoài tròn, mặt trong vuông tượng trưng cho “Thiên viên địa phương” (Trời tròn Đất vuông).
+                            Đúc bằng đồng thau, có hình tròn với lỗ vuông ở giữa
+                            Đường kính 22 – 24 mm
+                            Trọng lượng 2,8 – 3,4 gram
+                            Độ dày ~1,1 – 1,3 mm
                         </div>
                     </div>
-                    
+
                     <div class="info-item">
                         <div class="info-label">
                             <i class="fas fa-language"></i>
                             Chữ viết
                         </div>
                         <div class="info-value">
-                            Mặt trước khắc hai chữ Hán “五銖” (Ngũ Thù), đọc từ phải sang trái. Nét chữ chân phương, khắc sâu, mang phong cách triện văn hoặc lệ thư tùy triều đại.
+                            天福鎮寶
                         </div>
                     </div>
-                    
+
                     <div class="info-item">
                         <div class="info-label">
                             <i class="fas fa-lightbulb"></i>
                             Ý nghĩa tên gọi
                         </div>
                         <div class="info-value">
-                            “Ngũ Thù” nghĩa là “năm thù” – đơn vị đo trọng lượng thời Hán (một thù ≈ 0,68 gram).
-                            Tên gọi biểu trưng cho giá trị tiêu chuẩn và ổn định của tiền tệ, được xem là khuôn mẫu cho các loại tiền sau này.
+                            天 (Thiên): trời, biểu tượng quyền lực hợp trời
+
+                            福 (Phúc): phúc lộc, may mắn, thịnh vượng
+
+                            鎮 (Trấn): trấn giữ, ổn định, bảo vệ trật tự
+
+                            寶 (Bảo): vật quý, giá trị tiền tệ
                         </div>
                     </div>
-                    
+
                     <div class="description-box">
                         <div class="info-label" style="padding-left: 0;">
                             <i class="fas fa-book-open"></i>
                             Mô tả và lịch sử
                         </div>
                         <p>
-                            Tiền Ngũ Thù là một trong những đồng tiền lưu hành lâu nhất trong lịch sử Trung Hoa, bắt đầu từ thời Hán Vũ Đế (140–87 TCN).
-                            Đây  cũng là tiền tệ được sử dụng tại Việt Nam trong thời kỳ Bắc thuộc (111 TCN – 938 SCN).
+                            Tiền cổ Thiên Phúc Trấn Bảo là loại tiền được cho đúc và lưu hành dưới đời vua Lê Đại Hành
+                            triều đại nhà Tiền Lê.Đây được coi là loại tiền thứ hai của người Việt sau loại tiền Thái
+                            Bình Hưng Bảo do nhà Đinh cho đúc trước đó.
+                            Sơ lược về vua Lê Đại Hành.Vua Lê Đại Hành có tên húy là Lê Hoàn (941 – 18 tháng 4 năm 1005)
+                            là vị Hoàng đế sáng lập nhà Tiền Lê nước Đại Cồ Việt, trị vì nước Đại Cồ Việt trong 24
+                            năm.Khi lên ngôi vua,Lê Đại Hành đã sử dụng ba niên hiệu khác nhau trong suốt thời gian trị
+                            vì của mình đó là: Thiên Phúc (天福 980 – 988), Hưng Thống (興統 989 – 993), Ứng Thiên (應天 994 –
+                            1005).Trong thời gian sử dụng niên hiệu Thiên Phúc nhà vua đã cho đúc tiền Thiên Phúc Trấn
+                            Bảo phát hiện được ngày nay.
                         </p>
                     </div>
                 </div>
             </div>
         </div>
     </div>
-    
+
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
     <script>
         function swapImage(thumbnail) {
@@ -367,4 +388,5 @@
         }
     </script>
 </body>
+
 </html>
