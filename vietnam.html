@@ -1,0 +1,476 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Tiền tệ Việt Nam qua các triều đại</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.1/font/bootstrap-icons.css">
+    <style>
+        body {
+            background: url('/image/vietnambackground.webp') no-repeat center center fixed;
+            background-size: cover;
+            min-height: 100vh;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            position: relative;
+            padding: 2rem 0;
+        }
+        
+        body::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.5);
+            z-index: 0;
+        }
+        
+        .container {
+            position: relative;
+            z-index: 1;
+            max-width: 1200px;
+        }
+        
+        .header-section {
+            background: linear-gradient(135deg, #DA251D 0%, #FF6B6B 100%);
+            border-radius: 20px;
+            padding: 2.5rem;
+            margin-bottom: 2rem;
+            box-shadow: 0 10px 40px rgba(0,0,0,0.3);
+            animation: fadeInDown 0.8s ease-out;
+        }
+        
+        .header-section h1 {
+            color: white;
+            font-size: 2.5rem;
+            font-weight: 700;
+            margin-bottom: 0.5rem;
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.2);
+        }
+        
+        .header-section p {
+            color: rgba(255,255,255,0.9);
+            font-size: 1.1rem;
+            margin: 0;
+        }
+        
+        .back-button {
+            background: white;
+            color: #DA251D;
+            border: none;
+            padding: 0.8rem 1.5rem;
+            border-radius: 10px;
+            font-weight: 600;
+            text-decoration: none;
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+            transition: all 0.3s ease;
+            margin-bottom: 2rem;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.2);
+        }
+        
+        .back-button:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 6px 20px rgba(0,0,0,0.3);
+            color: #DA251D;
+        }
+        
+        .timeline {
+            position: relative;
+            padding-left: 2rem;
+        }
+        
+        .timeline::before {
+            content: '';
+            position: absolute;
+            left: 0;
+            top: 0;
+            bottom: 0;
+            width: 4px;
+            background: linear-gradient(to bottom, #DA251D, #FFD700);
+            border-radius: 2px;
+        }
+        
+        .period-card {
+            background: white;
+            border-radius: 15px;
+            padding: 1.5rem;
+            margin-bottom: 1.5rem;
+            box-shadow: 0 5px 20px rgba(0,0,0,0.2);
+            position: relative;
+            transition: all 0.3s ease;
+            cursor: pointer;
+            animation: fadeInRight 0.6s ease-out both;
+        }
+        
+        .period-card:hover {
+            transform: translateX(10px);
+            box-shadow: 0 8px 30px rgba(0,0,0,0.3);
+        }
+        
+        .period-card::before {
+            content: '';
+            position: absolute;
+            left: -2.5rem;
+            top: 2rem;
+            width: 20px;
+            height: 20px;
+            background: #DA251D;
+            border: 4px solid white;
+            border-radius: 50%;
+            box-shadow: 0 0 0 4px rgba(218, 37, 29, 0.2);
+        }
+        
+        .period-card.ancient::before {
+            background: #8B4513;
+        }
+        
+        .period-card.medieval::before {
+            background: #DAA520;
+        }
+        
+        .period-card.modern::before {
+            background: #DA251D;
+        }
+        
+        .period-card.contemporary::before {
+            background: #FF6B6B;
+        }
+        
+        .period-title {
+            font-size: 1.4rem;
+            font-weight: 700;
+            color: #DA251D;
+            margin-bottom: 0.5rem;
+        }
+        
+        .period-years {
+            font-size: 1rem;
+            color: #666;
+            font-weight: 600;
+            margin-bottom: 0.8rem;
+        }
+        
+        .period-description {
+            color: #555;
+            font-size: 0.95rem;
+            line-height: 1.6;
+        }
+        
+        .category-badge {
+            display: inline-block;
+            padding: 0.3rem 0.8rem;
+            border-radius: 20px;
+            font-size: 0.8rem;
+            font-weight: 600;
+            margin-bottom: 0.8rem;
+        }
+        
+        .badge-ancient {
+            background: #8B4513;
+            color: white;
+        }
+        
+        .badge-medieval {
+            background: #DAA520;
+            color: white;
+        }
+        
+        .badge-modern {
+            background: #DA251D;
+            color: white;
+        }
+        
+        .badge-contemporary {
+            background: #FF6B6B;
+            color: white;
+        }
+        
+        .badge-occupation {
+            background: #6c757d;
+            color: white;
+        }
+        
+        @keyframes fadeInDown {
+            from {
+                opacity: 0;
+                transform: translateY(-30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+        
+        @keyframes fadeInRight {
+            from {
+                opacity: 0;
+                transform: translateX(-30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateX(0);
+            }
+        }
+        
+        .period-card:nth-child(1) { animation-delay: 0.1s; }
+        .period-card:nth-child(2) { animation-delay: 0.15s; }
+        .period-card:nth-child(3) { animation-delay: 0.2s; }
+        .period-card:nth-child(4) { animation-delay: 0.25s; }
+        .period-card:nth-child(5) { animation-delay: 0.3s; }
+        .period-card:nth-child(6) { animation-delay: 0.35s; }
+        
+        @media (max-width: 768px) {
+            .header-section h1 {
+                font-size: 1.8rem;
+            }
+            
+            .timeline {
+                padding-left: 1.5rem;
+            }
+            
+            .period-card::before {
+                left: -2rem;
+                width: 15px;
+                height: 15px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <a href="index.html" class="back-button">
+            <i class="bi bi-arrow-left-circle"></i> Quay lại
+        </a>
+        
+        <div class="header-section">
+            <h1>🇻🇳 Tiền tệ Việt Nam qua các thời kỳ lịch sử</h1>
+            <p>Khám phá hành trình phát triển tiền tệ từ thời cổ đại đến hiện đại</p>
+        </div>
+        
+        <div class="timeline">
+            <!-- Thời kỳ Cổ đại -->
+             <div onclick="window.location.href='chuacotiente.html'" class="period-card ancient">
+                <span class="category-badge badge-ancient">Thời kỳ Cổ đại</span>
+                <div class="period-title">Nước Xích Quỷ</div>
+                <div class="period-years">2879–2524 TCN</div>
+                <p class="period-description">
+                    Xích Quỷ theo truyền thuyết Việt Nam là một liên minh quốc gia cổ đại của cư dân Bách Việt, được xem là quốc hiệu đầu tiên của người Việt vào đầu thời đại Hồng Bàng, thời Kinh Dương Vương. Từ Hán Việt Xích (赤) nghĩa là màu đỏ; từ Quỷ (鬼) có nghĩa là ma quỷ. Xích Quỷ là tên một ngôi sao có sắc đỏ rực rỡ nhất trong Nhị thập bát tú trên bầu trời.
+                    Tuy nhiên, chưa có bằng chứng khảo cổ nào cho thấy nhà nước này là có thật. Theo 1 số nhà nghiên cứu hiện đại thì câu chuyện này được xuất phát từ 1 tiểu thuyết dân gian, rồi được hư cấu vào sử sách thời Hậu Lê.
+                </p>
+            </div>
+            <div onclick="window.location.href='chuacotiente.html'" class="period-card ancient">
+                <span class="category-badge badge-ancient">Thời kỳ Cổ đại</span>
+                <div class="period-title">Nước Văn Lang</div>
+                <div class="period-years">VII - 258/218 TCN</div>
+                <p class="period-description">
+                   Văn Lang là nhà nước sơ khai, đứng đầu là Vua Hùng, dưới có các Lạc hầu, Lạc tướng trông coi từng bộ lạc, vùng đất. Xã hội lúc này mang tính quân chủ cha truyền con nối, tổ chức nhà nước đơn giản nhưng đã hình thành bộ máy cai quản thống nhất trên lãnh thổ. Đất nước chia thành 15 bộ, mỗi bộ có người đứng đầu cai quản dân cư, thu thuế và điều hành sản xuất.
+                </p>
+            </div>
+            
+            <div onclick="window.location.href='chuacotiente.html'" class="period-card ancient">
+                <span class="category-badge badge-ancient">Thời kỳ Cổ đại</span>
+                <div class="period-title">Nhà Thục</div>
+                <div class="period-years">257 hoặc 208 TCN – 179 TCN</div>
+                <p class="period-description">
+                    Thục Phán sau khi thống nhất các bộ lạc Lạc Việt và Tây Âu đã lập ra nhà nước Âu Lạc, đóng đô ở Cổ Loa (Đông Anh, Hà Nội). Đây là nhà nước trung ương tập quyền đầu tiên ở nước ta với bộ máy cai trị chặt chẽ hơn Văn Lang, đứng đầu là An Dương Vương, dưới có các lạc hầu, lạc tướng trông coi từng vùng. 
+                </p>
+            </div>
+             <div onclick="window.location.href='Nhà Triệu/nhatrieu.html'" class="period-card ancient">
+                <span class="category-badge badge-ancient">Thời kỳ Cổ đại</span>
+                <div class="period-title">Nhà Triệu</div>
+                <div class="period-years">179 TCN–111 TCN</div>
+                <p class="period-description">
+                    Sau khi đánh bại nhà Thục, Triệu Đà lập ra nhà Triệu, đóng đô ở Phiên Ngung (nay thuộc Quảng Châu, Trung Quốc), cai trị vùng Nam Việt, trong đó có một phần lãnh thổ nước ta (Bắc Bộ và Bắc Trung Bộ). Nhà Triệu là chính quyền phong kiến địa phương mang tính bán độc lập với nhà Hán, tổ chức bộ máy cai trị theo kiểu phong kiến Trung Hoa, có vua đứng đầu, bên dưới là hệ thống quan lại cai quản các quận, huyện.
+                </p>
+            </div>
+            <div onclick="window.location.href='Bắc Thuộc 1/bacthuoc1.html'" class="period-card ancient">
+                <span class="category-badge badge-occupation">Bắc thuộc</span>
+                <div class="period-title">Bắc thuộc</div>
+                <div class="period-years">111 TCN – 40</div>
+                <p class="period-description">
+                    Việt Nam bị nhà Hán thống trị. Tiền tệ Trung Quốc được sử dụng rộng rãi, bắt đầu có đồng tiền chữ Hán lưu hành.
+                </p>
+            </div>
+            
+            <div class="period-card ancient">
+                <span class="category-badge badge-ancient">Khởi nghĩa</span>
+                <div class="period-title">Hai Bà Trưng</div>
+                <div class="period-years">40 – 43</div>
+                <p class="period-description">
+                    Thời kỳ độc lập ngắn ngủi do Trưng Trắc và Trưng Nhị lãnh đạo. Khôi phục phần nào nền kinh tế và tiền tệ bản địa.
+                </p>
+            </div>
+            <div class="period-card ancient">
+                <span class="category-badge badge-ancient">Khởi nghĩa</span>
+                <div class="period-title">Bắc thuộc</div>
+                <div class="period-years">43 – 544</div>
+                <p class="period-description">
+                    Thời kỳ độc lập ngắn ngủi do Trưng Trắc và Trưng Nhị lãnh đạo. Khôi phục phần nào nền kinh tế và tiền tệ bản địa.
+                </p>
+            </div>
+            
+            <!-- Thời kỳ Trung đại -->
+            <div class="period-card medieval">
+                <span class="category-badge badge-medieval">Thời kỳ Trung đại</span>
+                <div class="period-title">Nhà Tiền Lý</div>
+                <div class="period-years">544 – 602</div>
+                <p class="period-description">
+                    Do Lý Bí sáng lập sau khi đánh đuổi quân Lương. Bắt đầu đúc tiền riêng với chữ Hán, khẳng định chủ quyền quốc gia.
+                </p>
+            </div>
+            
+            <div class="period-card medieval">
+                <span class="category-badge badge-occupation">Bắc thuộc</span>
+                <div class="period-title">Bắc thuộc</div>
+                <div class="period-years">602 – 905</div>
+                <p class="period-description">
+                    Thời kỳ bị nhà Đường và các triều đại Trung Quốc cai trị. Tiền tệ Trung Quốc thống trị hoàn toàn.
+                </p>
+            </div>
+            
+            <div class="period-card medieval">
+                <span class="category-badge badge-medieval">Độc lập</span>
+                <div class="period-title">Nhà Ngô</div>
+                <div class="period-years">939 – 965</div>
+                <p class="period-description">
+                    Ngô Quyền đánh thắng quân Nam Hán trên sông Bạch Đằng, mở ra thời kỳ tự chủ. Bắt đầu khôi phục hệ thống tiền tệ độc lập.
+                </p>
+            </div>
+            
+            <div class="period-card medieval">
+                <span class="category-badge badge-medieval">Trung đại</span>
+                <div class="period-title">Nhà Đinh</div>
+                <div class="period-years">968 – 980</div>
+                <p class="period-description">
+                    Đinh Bộ Lĩnh thống nhất đất nước, lấy quốc hiệu Đại Cồ Việt. Phát triển kinh tế và thương mại, đúc tiền đồng riêng.
+                </p>
+            </div>
+            
+            <div class="period-card medieval">
+                <span class="category-badge badge-medieval">Trung đại</span>
+                <div class="period-title">Nhà Tiền Lê</div>
+                <div class="period-years">980 – 1009</div>
+                <p class="period-description">
+                    Thời kỳ ngắn do Lê Hoàn sáng lập. Tiếp tục phát triển nền kinh tế và hệ thống tiền tệ từ thời Đinh.
+                </p>
+            </div>
+            
+            <div class="period-card medieval">
+                <span class="category-badge badge-medieval">Thời kỳ phát triển</span>
+                <div class="period-title">Nhà Lý</div>
+                <div class="period-years">1009 – 1225</div>
+                <p class="period-description">
+                    Triều đại hưng thịnh với 216 năm cai trị. Đúc nhiều loại tiền đồng với chữ Hán, phát triển mạnh thương mại và kinh tế.
+                </p>
+            </div>
+            
+            <div class="period-card medieval">
+                <span class="category-badge badge-medieval">Thời kỳ phát triển</span>
+                <div class="period-title">Nhà Trần</div>
+                <div class="period-years">1225 – 1400</div>
+                <p class="period-description">
+                    Triều đại anh hùng chống Mông Cổ. Phát triển hệ thống tiền tệ đa dạng, có cả tiền giấy và tiền đồng với nhiều mệnh giá.
+                </p>
+            </div>
+            
+            <div class="period-card medieval">
+                <span class="category-badge badge-medieval">Thời kỳ rối loạn</span>
+                <div class="period-title">Nhà Hồ</div>
+                <div class="period-years">1400 – 1407</div>
+                <p class="period-description">
+                    Triều đại ngắn ngủi do Hồ Quý Ly sáng lập. Cải cách mạnh mẽ về tiền tệ, phát hành tiền giấy thay tiền đồng.
+                </p>
+            </div>
+            
+            <div class="period-card medieval">
+                <span class="category-badge badge-occupation">Bắc thuộc</span>
+                <div class="period-title">Bắc thuộc lần 4</div>
+                <div class="period-years">1407 – 1427</div>
+                <p class="period-description">
+                    Thời kỳ bị nhà Minh xâm lược và cai trị. Tiền tệ Trung Quốc lại được áp đặt sử dụng.
+                </p>
+            </div>
+            
+            <div class="period-card medieval">
+                <span class="category-badge badge-medieval">Phục hưng</span>
+                <div class="period-title">Nhà Hậu Lê</div>
+                <div class="period-years">1428 – 1788</div>
+                <p class="period-description">
+                    Triều đại dài nhất trong lịch sử Việt Nam. Hệ thống tiền tệ phát triển đỉnh cao với nhiều loại tiền đồng chất lượng cao.
+                </p>
+            </div>
+            
+            <div class="period-card medieval">
+                <span class="category-badge badge-medieval">Thời kỳ chia cắt</span>
+                <div class="period-title">Trịnh-Nguyễn phân tranh</div>
+                <div class="period-years">1545 – 1787</div>
+                <p class="period-description">
+                    Đất nước chia cắt thành Đàng Ngoài (họ Trịnh) và Đàng Trong (họ Nguyễn). Mỗi bên phát hành tiền tệ riêng.
+                </p>
+            </div>
+            
+            <div onclick="window.location.href='chuacotiente.html'" class="period-card medieval">
+                <span class="category-badge badge-medieval">Khởi nghĩa</span>
+                <div class="period-title">Nhà Tây Sơn</div>
+                <div class="period-years">1778 – 1802</div>
+                <p class="period-description">
+                    Nhà Tây Sơn hay Triều Tây Sơn là một triều đại quân chủ trong lịch sử Việt Nam tồn tại từ năm 1778 đến năm 1802. Nhà Tây Sơn được lập nên bởi 3 anh em Nguyễn Nhạc, Nguyễn Lữ và Nguyễn Huệ. Người nắm quyền đầu tiên của nhà Tây Sơn là Nguyễn Nhạc, người anh cả, lên ngôi năm 1778. Và sau đó tới năm 1788, Nguyễn Nhạc nhường ngôi cho em là Nguyễn Huệ, chính là Quang Trung hoàng đế.
+                </p>
+            </div>
+            
+            <!-- Thời kỳ Cận đại -->
+            <div class="period-card modern">
+                <span class="category-badge badge-modern">Thời kỳ Cận đại</span>
+                <div class="period-title">Nhà Nguyễn</div>
+                <div class="period-years">1802 – 1945</div>
+                <p class="period-description">
+                    Triều đại phát xứ cuối cùng. Đầu kỳ phát triển tiền đồng theo mẫu cổ truyền, sau chuyển sang tiền xu và giấy bạc kiểu Pháp.
+                </p>
+            </div>
+            
+            <div class="period-card modern">
+                <span class="category-badge badge-occupation">Thuộc địa</span>
+                <div class="period-title">Thời kỳ Pháp thuộc</div>
+                <div class="period-years">1858 – 1945</div>
+                <p class="period-description">
+                    Việt Nam bị Pháp xâm lược và cai trị. Đồng Đông Dương (Piastre) được phát hành, thay thế hoàn toàn tiền đồng cổ.
+                </p>
+            </div>
+            
+            <div class="period-card modern">
+                <span class="category-badge badge-modern">Kháng chiến</span>
+                <div class="period-title">Thời kỳ kháng chiến chống Pháp</div>
+                <div class="period-years">1945 – 1954</div>
+                <p class="period-description">
+                    Sau Cách mạng tháng Tám, Việt Nam phát hành đồng Việt Nam độc lập. Miền Nam vẫn dùng đồng Đông Dương của Pháp.
+                </p>
+            </div>
+            
+            <!-- Thời kỳ Hiện đại -->
+            <div class="period-card contemporary">
+                <span class="category-badge badge-contemporary">Hiện đại</span>
+                <div class="period-title">Thời kỳ đầu sau thống nhất</div>
+                <div class="period-years">1975 – 1985</div>
+                <p class="period-description">
+                    Sau thống nhất, phát hành đồng Việt Nam thống nhất. Nền kinh tế kế hoạch hóa tập trung, giá trị tiền tệ không ổn định.
+                </p>
+            </div>
+            
+            <div class="period-card contemporary">
+                <span class="category-badge badge-contemporary">Hiện đại</span>
+                <div class="period-title">Thời kỳ Đổi mới</div>
+                <div class="period-years">1986 – Nay</div>
+                <p class="period-description">
+                    Chính sách Đổi mới được thực hiện. Đồng Việt Nam (VND) ổn định và phát triển. Hiện có các mệnh giá từ 100đ đến 500.000đ.
+                </p>
+            </div>
+        </div>
+    </div>
+    
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
+</body>
+</html>

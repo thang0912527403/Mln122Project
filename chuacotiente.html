@@ -1,0 +1,291 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Thời kỳ chưa có tiền tệ - Việt Nam</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.1/font/bootstrap-icons.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" />
+   <style>
+        body {
+            background: url('/image/nocurrency.jpg') no-repeat center center fixed;
+            background-size: cover;
+            min-height: 100vh;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            position: relative;
+            padding: 2rem 0;
+        }
+        
+        body::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.5);
+            z-index: 0;
+        }
+        
+        .container {
+            position: relative;
+            z-index: 1;
+            max-width: 1000px;
+        }
+        
+        .header-section {
+            background: linear-gradient(135deg, #8B4513 0%, #D2691E 100%);
+            border-radius: 20px;
+            padding: 3rem;
+            margin-bottom: 2rem;
+            box-shadow: 0 10px 40px rgba(0,0,0,0.3);
+            animation: fadeInDown 0.8s ease-out;
+            text-align: center;
+        }
+        
+        .header-section h1 {
+            color: white;
+            font-size: 2.5rem;
+            font-weight: 700;
+            margin-bottom: 1rem;
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.2);
+        }
+        
+        .header-section p {
+            color: rgba(255,255,255,0.95);
+            font-size: 1.2rem;
+            margin: 0;
+            line-height: 1.6;
+        }
+        
+        .back-button {
+            background: white;
+            color: #8B4513;
+            border: none;
+            padding: 0.8rem 1.5rem;
+            border-radius: 10px;
+            font-weight: 600;
+            text-decoration: none;
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+            transition: all 0.3s ease;
+            margin-bottom: 2rem;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.2);
+        }
+        
+        .back-button:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 6px 20px rgba(0,0,0,0.3);
+            color: #8B4513;
+        }
+        
+        .info-card {
+            background: white;
+            border-radius: 20px;
+            padding: 2rem;
+            margin-bottom: 2rem;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.2);
+            animation: fadeInUp 0.8s ease-out;
+        }
+        
+        .info-card h2 {
+            color: #8B4513;
+            font-size: 1.8rem;
+            font-weight: 700;
+            margin-bottom: 1.5rem;
+            border-bottom: 3px solid #D2691E;
+            padding-bottom: 0.5rem;
+        }
+        
+        .info-card h3 {
+            color: #D2691E;
+            font-size: 1.4rem;
+            font-weight: 600;
+            margin-top: 1.5rem;
+            margin-bottom: 1rem;
+        }
+        
+        .info-card p {
+            color: #555;
+            font-size: 1rem;
+            line-height: 1.8;
+            margin-bottom: 1rem;
+        }
+        
+        .info-card ul {
+            color: #555;
+            line-height: 1.8;
+            margin-left: 1.5rem;
+        }
+        
+        .info-card li {
+            margin-bottom: 0.8rem;
+        }
+        
+        .highlight-box {
+            background: linear-gradient(135deg, rgba(139, 69, 19, 0.1) 0%, rgba(210, 105, 30, 0.1) 100%);
+            border-left: 4px solid #8B4513;
+            padding: 1.5rem;
+            border-radius: 10px;
+            margin: 1.5rem 0;
+        }
+        
+        .highlight-box h4 {
+            color: #8B4513;
+            font-weight: 700;
+            margin-bottom: 0.8rem;
+        }
+        
+        .icon-box {
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+            margin-bottom: 1.5rem;
+        }
+        
+        .icon-box i {
+            font-size: 2.5rem;
+            color: #D2691E;
+        }
+        
+        .icon-box h3 {
+            margin: 0;
+        }
+        
+        @keyframes fadeInDown {
+            from {
+                opacity: 0;
+                transform: translateY(-30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+        
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+        
+        @media (max-width: 768px) {
+            .header-section h1 {
+                font-size: 1.8rem;
+            }
+            
+            .header-section p {
+                font-size: 1rem;
+            }
+            
+            .info-card {
+                padding: 1.5rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <a href="vietnam.html" class="back-button">
+            <i class="bi bi-arrow-left-circle"></i> Quay lại Timeline
+        </a>
+        <a href="index.html" class="back-button" style="margin-left: 41rem;">
+            <i class="bi bi-arrow-left-circle"></i> Home
+        </a>
+        <div class="header-section">
+            <h1><i class="fa-solid fa-weight-hanging"></i> Thời kỳ chưa có tiền tệ</h1>
+            <p>Nền kinh tế trao đổi hàng hóa trong thời nguyên thủy và cổ đại</p>
+        </div>
+        
+        <div class="info-card">
+            <h2>Giới thiệu chung</h2>
+            <p>
+                Trong thời kỳ đầu lịch sử Việt Nam, từ thời Văn Lang, Âu Lạc đến đầu thời kỳ Bắc thuộc, người Việt cổ chưa sử dụng tiền tệ theo nghĩa hiện đại. Thay vào đó, họ sử dụng hệ thống trao đổi hàng hóa trực tiếp hoặc các vật phẩm có giá trị làm phương tiện trao đổi.
+            </p>
+            
+            <div class="highlight-box">
+                <h4><i class="bi bi-clock-history"></i> Khoảng thời gian</h4>
+                <p><strong>Từ thời Văn Lang (thế kỷ VII TCN) đến khoảng thế kỷ I sau CN</strong><br>
+                Khi quân Hán xâm lược và mang hệ thống tiền tệ Trung Quốc vào Việt Nam.</p>
+            </div>
+            
+            <div class="icon-box">
+                <i class="bi bi-arrow-left-right"></i>
+                <div>
+                    <h3>Hệ thống trao đổi hàng hóa</h3>
+                </div>
+            </div>
+            
+            <h3>1. Trao đổi trực tiếp (Barter System)</h3>
+            <p>
+                Người dân trao đổi hàng hóa với nhau một cách trực tiếp dựa trên nhu cầu:
+            </p>
+            <ul>
+                <li><strong>Lương thực:</strong> Thóc, gạo, ngô, khoai - là hàng hóa quan trọng nhất</li>
+                <li><strong>Gia súc:</strong> Trâu, bò, lợn, gà - biểu tượng của sự giàu có</li>
+                <li><strong>Vải vóc:</strong> Vải lanh, vải gai - sản phẩm dệt thủ công</li>
+                <li><strong>Đồ gốm:</strong> Bát, chén, nồi - sản phẩm gốm sứ cổ</li>
+                <li><strong>Muối:</strong> Rất quý giá, dùng để bảo quản thực phẩm</li>
+            </ul>
+            
+            <h3>2. Vật phẩm có giá trị làm phương tiện trao đổi</h3>
+            <p>
+                Một số vật phẩm được coi là có giá trị cao và được chấp nhận rộng rãi trong trao đổi:
+            </p>
+            
+            <div class="highlight-box">
+                <h4><i class="bi bi-gem"></i> Đồ đồng thau</h4>
+                <p>
+                    Trống đồng, rìu đồng, lưỡi cày đồng là những vật phẩm quý giá nhất. Đặc biệt là <strong>trống đồng Đông Sơn</strong> - biểu tượng văn hóa Việt cổ, không chỉ dùng trong lễ nghi mà còn là thước đo giá trị và quyền lực.
+                </p>
+            </div>
+            
+            <ul>
+                <li><strong>Vỏ ốc, sò:</strong> Được xâu thành chuỗi, dùng làm đồ trang sức và phương tiện trao đổi</li>
+                <li><strong>Ngọc trai:</strong> Rất quý hiếm, chỉ dành cho tầng lớp thượng lưu</li>
+                <li><strong>Vàng, bạc tự nhiên:</strong> Tuy hiếm nhưng đã được biết đến và sử dụng</li>
+                <li><strong>Gỗ quý:</strong> Gỗ trắc, gỗ hương - có giá trị cao trong xây dựng và chế tác</li>
+            </ul>
+            
+            <h3>3. Đặc điểm nền kinh tế thời kỳ này</h3>
+            <ul>
+                <li><strong>Kinh tế nông nghiệp:</strong> Trồng lúa nước là ngành chính, kỹ thuật trồng lúa đã phát triển</li>
+                <li><strong>Thủ công nghiệp:</strong> Đúc đồng, dệt vải, làm gốm đã phát triển khá cao</li>
+                <li><strong>Thương mại:</strong> Chủ yếu trao đổi hàng hóa cục bộ, ít có thương mại đường dài</li>
+                <li><strong>Phân tầng xã hội:</strong> Đã xuất hiện sự giàu nghèo, quyền lực được thể hiện qua việc sở hữu đồ đồng, trâu bò</li>
+            </ul>
+            
+            <div class="highlight-box">
+                <h4><i class="bi bi-info-circle"></i> Tại sao chưa có tiền tệ?</h4>
+                <ul style="margin-bottom: 0;">
+                    <li>Nền kinh tế còn khép kín, tự cung tự cấp</li>
+                    <li>Quy mô sản xuất nhỏ, chưa có thặng dư lớn</li>
+                    <li>Chưa có nhu cầu trao đổi thương mại quy mô lớn</li>
+                    <li>Chưa có nhà nước tập quyền mạnh để phát hành và quản lý tiền tệ</li>
+                </ul>
+            </div>
+            
+            <h3>4. Sự chuyển đổi sang thời kỳ có tiền tệ</h3>
+            <p>
+                Khi nhà Hán xâm lược Việt Nam (111 TCN), họ mang theo hệ thống tiền tệ Trung Quốc. Đồng tiền kim loại với lỗ vuông giữa bắt đầu xuất hiện và lưu hành ở Việt Nam. Đây là bước ngoặt đánh dấu sự chuyển đổi từ nền kinh tế trao đổi hàng hóa sang nền kinh tế tiền tệ.
+            </p>
+            
+            <div class="highlight-box">
+                <h4><i class="bi bi-lightbulb"></i> Ý nghĩa lịch sử</h4>
+                <p>
+                    Thời kỳ chưa có tiền tệ phản ánh giai đoạn đầu của nền văn minh Việt Nam. Mặc dù chưa có tiền tệ, người Việt cổ đã xây dựng được nền văn hóa đồ đồng Đông Sơn rực rỡ, với kỹ thuật chế tác kim loại cao, đặt nền móng cho sự phát triển kinh tế - xã hội sau này.
+                </p>
+            </div>
+        </div>
+    </div>
+    
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
+</body>
+</html>
