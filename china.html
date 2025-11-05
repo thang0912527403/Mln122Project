@@ -1,0 +1,833 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Tiền Trung Quốc tại Việt Nam</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.1/font/bootstrap-icons.css">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            background: linear-gradient(135deg, #1a1a2e 0%, #16213e 50%, #0f3460 100%);
+            min-height: 100vh;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            padding: 2rem 0;
+            overflow-x: hidden;
+        }
+        
+        .container-fluid {
+            max-width: 100%;
+            padding: 0 2rem;
+        }
+        
+        .header-section {
+            background: linear-gradient(135deg, #DA251D 0%, #FF6B6B 100%);
+            border-radius: 20px;
+            padding: 3rem;
+            margin-bottom: 3rem;
+            box-shadow: 0 15px 50px rgba(218, 37, 29, 0.4);
+            text-align: center;
+            animation: fadeInDown 0.8s ease-out;
+        }
+        
+        .header-section h1 {
+            color: white;
+            font-size: 3rem;
+            font-weight: 800;
+            margin-bottom: 0.5rem;
+            text-shadow: 2px 2px 8px rgba(0,0,0,0.3);
+        }
+        
+        .header-section .subtitle {
+            color: rgba(255,255,255,0.95);
+            font-size: 1.2rem;
+        }
+
+        .timeline-wrapper {
+            position: relative;
+            padding: 2rem 0;
+        }
+
+        .timeline-line {
+            position: absolute;
+            left: 0;
+            right: 0;
+            height: 4px;
+            background: linear-gradient(to right, #DA251D, #FFD700, #FF6B6B, #DA251D);
+            top: 5%;
+            transform: translateY(-50%);
+            z-index: 1;
+        }
+
+        .timeline-scroll {
+            display: flex;
+            gap: 2rem;
+            padding: 4rem 0;
+            overflow-x: auto;
+            position: relative;
+            z-index: 2;
+            scroll-behavior: smooth;
+            padding-bottom: 2rem;
+            user-select: none;
+        }
+
+        .timeline-scroll::-webkit-scrollbar {
+            height: 8px;
+        }
+
+        .timeline-scroll::-webkit-scrollbar-track {
+            background: rgba(255,255,255,0.1);
+            border-radius: 10px;
+        }
+
+        .timeline-scroll::-webkit-scrollbar-thumb {
+            background: #DA251D;
+            border-radius: 10px;
+        }
+
+        .currency-card {
+            min-width: 380px;
+            max-width: 380px;
+            background: white;
+            border-radius: 20px;
+            padding: 0;
+            box-shadow: 0 10px 40px rgba(0,0,0,0.3);
+            transition: all 0.4s ease;
+            position: relative;
+            flex-shrink: 0;
+            animation: fadeInUp 0.6s ease-out both;
+        }
+
+        .currency-card:hover {
+            transform: translateY(-15px) scale(1.02);
+            box-shadow: 0 20px 60px rgba(218, 37, 29, 0.4);
+        }
+
+        .currency-card::before {
+            content: '';
+            position: absolute;
+            top: -40px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 24px;
+            height: 24px;
+            background: #DA251D;
+            border: 6px solid white;
+            border-radius: 50%;
+            box-shadow: 0 0 0 6px rgba(218, 37, 29, 0.3);
+            z-index: 10;
+        }
+
+        .coin-image {
+            width: 100%;
+            height: 250px;
+            object-fit: cover;
+            border-radius: 20px 20px 0 0;
+            background: linear-gradient(135deg, #f5f7fa 0%, #c3cfe2 100%);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 5rem;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .coin-image::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: linear-gradient(135deg, rgba(218,37,29,0.1) 0%, rgba(255,215,0,0.1) 100%);
+        }
+
+        .coin-image img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+
+        .card-content {
+            padding: 1.5rem;
+        }
+
+        .period-badge {
+            display: inline-block;
+            padding: 0.4rem 1rem;
+            border-radius: 20px;
+            font-size: 0.8rem;
+            font-weight: 700;
+            margin-bottom: 1rem;
+            background: linear-gradient(135deg, #DA251D, #FF6B6B);
+            color: white;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+        }
+
+        .currency-name {
+            font-size: 1.5rem;
+            font-weight: 800;
+            color: #2c3e50;
+            margin-bottom: 0.3rem;
+        }
+
+        .chinese-name {
+            font-size: 1.8rem;
+            color: #DA251D;
+            font-weight: 700;
+            margin-bottom: 0.8rem;
+            font-family: 'Microsoft YaHei', SimSun, serif;
+        }
+
+        .period-time {
+            font-size: 0.95rem;
+            color: #7f8c8d;
+            font-weight: 600;
+            margin-bottom: 1rem;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+
+        .specs-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 0.8rem;
+            margin: 1rem 0;
+            padding: 1rem;
+            background: #f8f9fa;
+            border-radius: 10px;
+        }
+
+        .spec-item {
+            display: flex;
+            flex-direction: column;
+        }
+
+        .spec-label {
+            font-size: 0.75rem;
+            color: #7f8c8d;
+            font-weight: 600;
+            text-transform: uppercase;
+            margin-bottom: 0.3rem;
+        }
+
+        .spec-value {
+            font-size: 0.9rem;
+            color: #2c3e50;
+            font-weight: 700;
+        }
+
+        .description {
+            color: #555;
+            line-height: 1.7;
+            font-size: 0.9rem;
+            margin-top: 1rem;
+            padding-top: 1rem;
+            border-top: 2px solid #f0f0f0;
+        }
+
+        .features-list {
+            margin-top: 1rem;
+            padding: 0.8rem 1rem;
+            background: linear-gradient(135deg, #fff5f5, #ffe5e5);
+            border-left: 4px solid #DA251D;
+            border-radius: 8px;
+        }
+
+        .features-list h5 {
+            color: #DA251D;
+            font-size: 0.85rem;
+            font-weight: 700;
+            margin-bottom: 0.5rem;
+            text-transform: uppercase;
+        }
+
+        .features-list ul {
+            margin: 0;
+            padding-left: 1.2rem;
+            font-size: 0.85rem;
+        }
+
+        .features-list li {
+            color: #555;
+            margin-bottom: 0.3rem;
+        }
+
+        .scroll-hint {
+            text-align: center;
+            color: white;
+            font-size: 1rem;
+            margin-top: 2rem;
+            animation: bounce 2s infinite;
+        }
+
+        @keyframes fadeInDown {
+            from {
+                opacity: 0;
+                transform: translateY(-30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        @keyframes bounce {
+            0%, 20%, 50%, 80%, 100% {
+                transform: translateY(0);
+            }
+            40% {
+                transform: translateY(-10px);
+            }
+            60% {
+                transform: translateY(-5px);
+            }
+        }
+
+        .currency-card:nth-child(1) { animation-delay: 0.1s; }
+        .currency-card:nth-child(2) { animation-delay: 0.2s; }
+        .currency-card:nth-child(3) { animation-delay: 0.3s; }
+        .currency-card:nth-child(4) { animation-delay: 0.4s; }
+        .currency-card:nth-child(5) { animation-delay: 0.5s; }
+        .currency-card:nth-child(6) { animation-delay: 0.6s; }
+        .currency-card:nth-child(7) { animation-delay: 0.7s; }
+
+        .legend {
+            background: white;
+            border-radius: 15px;
+            padding: 2rem;
+            margin-top: 3rem;
+            box-shadow: 0 10px 40px rgba(0,0,0,0.2);
+        }
+
+        .legend h3 {
+            color: #DA251D;
+            font-size: 1.5rem;
+            font-weight: 800;
+            margin-bottom: 1.5rem;
+        }
+
+        .legend-content {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 1.5rem;
+        }
+
+        .legend-item {
+            padding: 1rem;
+            background: #f8f9fa;
+            border-radius: 10px;
+            border-left: 4px solid #DA251D;
+        }
+
+        .legend-item h4 {
+            color: #2c3e50;
+            font-size: 1.1rem;
+            font-weight: 700;
+            margin-bottom: 0.5rem;
+        }
+
+        .legend-item p {
+            color: #555;
+            font-size: 0.9rem;
+            margin: 0;
+            line-height: 1.6;
+        }
+
+        @media (max-width: 768px) {
+            .header-section h1 {
+                font-size: 2rem;
+            }
+            
+            .currency-card {
+                min-width: 320px;
+                max-width: 320px;
+            }
+
+            .specs-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+        .timeline-scroll {
+            display: flex;
+            gap: 2rem;
+            padding: 4rem 0;
+            overflow-x: auto;
+            position: relative;
+            z-index: 2;
+            scroll-behavior: smooth;
+            padding-bottom: 2rem;
+            cursor: grab;
+        }
+
+        .timeline-scroll:active {
+            cursor: grabbing;
+        }
+
+        .timeline-scroll.dragging {
+            scroll-behavior: auto;
+        }
+        .back-button {
+            background: white;
+            color: #DA251D;
+            border: none;
+            padding: 0.8rem 1.5rem;
+            border-radius: 10px;
+            font-weight: 600;
+            text-decoration: none;
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+            transition: all 0.3s ease;
+            margin-bottom: 2rem;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.2);
+        }
+        
+        .back-button:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 6px 20px rgba(0,0,0,0.3);
+            color: #DA251D;
+        }
+    </style>
+</head>
+<body>
+    <div class="container-fluid">
+        <a href="index.html" class="back-button">
+            <i class="bi bi-arrow-left-circle"></i> Quay lại
+        </a>
+        <div class="header-section">
+            <h1>🪙 Tiền Trung Quốc lưu hành tại Việt Nam</h1>
+            <p class="subtitle">Hành trình tiền tệ từ Bắc thuộc đến thời kỳ giao thương - Cuộn ngang để khám phá</p>
+        </div>
+
+        <div class="timeline-wrapper">
+            <div class="timeline-line"></div>
+            <div class="timeline-scroll">
+                
+                <!-- Tiền Bán Lượng -->
+                <div class="currency-card">
+                    <div class="coin-image">
+                        <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/1/1d/Mold_for_making_banliang_coins.jpg/800px-Mold_for_making_banliang_coins.jpg" alt="Bán Lượng">
+                    </div>
+                    <div class="card-content">
+                        <span class="period-badge">Nhà Tần</span>
+                        <h2 class="currency-name">Bán Lượng Tiền</h2>
+                        <div class="chinese-name">半兩錢</div>
+                        <div class="period-time">
+                            <i class="bi bi-calendar-range"></i>
+                            221 - 207 TCN
+                        </div>
+                        
+                        <div class="specs-grid">
+                            <div class="spec-item">
+                                <span class="spec-label">Chất liệu</span>
+                                <span class="spec-value">Đồng</span>
+                            </div>
+                            <div class="spec-item">
+                                <span class="spec-label">Trọng lượng</span>
+                                <span class="spec-value">~8 gram</span>
+                            </div>
+                            <div class="spec-item">
+                                <span class="spec-label">Đường kính</span>
+                                <span class="spec-value">32-35 mm</span>
+                            </div>
+                            <div class="spec-item">
+                                <span class="spec-label">Lỗ vuông</span>
+                                <span class="spec-value">6-8 mm</span>
+                            </div>
+                        </div>
+
+                        <div class="description">
+                            Đồng tiền đầu tiên của Trung Quốc được lưu hành tại Việt Nam. Sau khi Tần Thủy Hoàng thống nhất, tiền Bán Lượng trở thành tiền tệ chính thức thay thế các loại tiền địa phương.
+                        </div>
+
+                        <div class="features-list">
+                            <h5>Đặc điểm nổi bật</h5>
+                            <ul>
+                                <li>Đồng tiền thống nhất đầu tiên</li>
+                                <li>Hình tròn vuông lỗ - biểu tượng "Thiên địa"</li>
+                                <li>Chữ Tiểu Triện "半兩"</li>
+                                <li>Đúc bằng khuôn đất nung</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Tiền Ngũ Thù -->
+                <div class="currency-card">
+                    <div class="coin-image">
+                        <img src="image/ngũ thù/nguthu.jpg" alt="Ngũ Thù">
+                    </div>
+                    <div class="card-content">
+                        <span class="period-badge">Nhà Hán</span>
+                        <h2 class="currency-name">Ngũ Thù Tiền</h2>
+                        <div class="chinese-name">五銖錢</div>
+                        <div class="period-time">
+                            <i class="bi bi-calendar-range"></i>
+                            118 TCN - 621
+                        </div>
+                        
+                        <div class="specs-grid">
+                            <div class="spec-item">
+                                <span class="spec-label">Chất liệu</span>
+                                <span class="spec-value">Đồng đỏ</span>
+                            </div>
+                            <div class="spec-item">
+                                <span class="spec-label">Trọng lượng</span>
+                                <span class="spec-value">3.5-4 gram</span>
+                            </div>
+                            <div class="spec-item">
+                                <span class="spec-label">Đường kính</span>
+                                <span class="spec-value">25-28 mm</span>
+                            </div>
+                            <div class="spec-item">
+                                <span class="spec-label">Thời gian lưu hành</span>
+                                <span class="spec-value">~739 năm</span>
+                            </div>
+                        </div>
+
+                        <div class="description">
+                            Đồng tiền lưu hành lâu nhất trong lịch sử (hơn 700 năm). Tại Việt Nam, Ngũ Thù là tiền phổ biến nhất thời Bắc thuộc, được tìm thấy nhiều ở Cổ Loa, Luy Lâu.
+                        </div>
+
+                        <div class="features-list">
+                            <h5>Đặc điểm nổi bật</h5>
+                            <ul>
+                                <li>Trọng lượng chuẩn 5 thù</li>
+                                <li>Chất lượng cao, tinh xảo</li>
+                                <li>Viền ngoài và viền lỗ nổi rõ</li>
+                                <li>Nhiều phiên bản qua các đời</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Khai Nguyên Thông Bảo -->
+                <div class="currency-card">
+                    <div class="coin-image">
+                        <img src="https://vuatiente.vn/files/sanpham/1240/1.jpg" alt="Khai Nguyên">
+                    </div>
+                    <div class="card-content">
+                        <span class="period-badge">Nhà Đường</span>
+                        <h2 class="currency-name">Khai Nguyên Thông Bảo</h2>
+                        <div class="chinese-name">開元通寶</div>
+                        <div class="period-time">
+                            <i class="bi bi-calendar-range"></i>
+                            621 - 907
+                        </div>
+                        
+                        <div class="specs-grid">
+                            <div class="spec-item">
+                                <span class="spec-label">Chất liệu</span>
+                                <span class="spec-value">Đồng/Thiếc</span>
+                            </div>
+                            <div class="spec-item">
+                                <span class="spec-label">Trọng lượng</span>
+                                <span class="spec-value">4-4.5 gram</span>
+                            </div>
+                            <div class="spec-item">
+                                <span class="spec-label">Đường kính</span>
+                                <span class="spec-value">24-25 mm</span>
+                            </div>
+                            <div class="spec-item">
+                                <span class="spec-label">Kiểu chữ</span>
+                                <span class="spec-value">Hải thư</span>
+                            </div>
+                        </div>
+
+                        <div class="description">
+                            Mở đầu kỷ nguyên "Thông Bảo" trong lịch sử tiền tệ Đông Á. Là mẫu mực cho tất cả đồng tiền Việt Nam về sau như Thái Bình Hưng Bảo, Thiên Phúc Trấn Bảo.
+                        </div>
+
+                        <div class="features-list">
+                            <h5>Đặc điểm nổi bật</h5>
+                            <ul>
+                                <li>Chữ viết đẹp, kiểu Hải thư độc đáo</li>
+                                <li>Ảnh hưởng lớn đến tiền châu Á</li>
+                                <li>Được Việt Nam bắt chước về sau</li>
+                                <li>Đúc công nghệ cao</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Tống Nguyên Thông Bảo -->
+                <div class="currency-card">
+                    <div class="coin-image">
+                        <img src="china_coin/tongnguyenthongbao.jpg" alt="Tống tiền">
+                    </div>
+                    <div class="card-content">
+                        <span class="period-badge">Nhà Tống</span>
+                        <h2 class="currency-name">Tống Nguyên Thông Bảo</h2>
+                        <div class="chinese-name">宋元通寶</div>
+                        <div class="period-time">
+                            <i class="bi bi-calendar-range"></i>
+                            960 - 976
+                        </div>
+                        
+                        <div class="specs-grid">
+                            <div class="spec-item">
+                                <span class="spec-label">Chất liệu</span>
+                                <span class="spec-value">Đồng/Sắt</span>
+                            </div>
+                            <div class="spec-item">
+                                <span class="spec-label">Trọng lượng</span>
+                                <span class="spec-value">3-4 gram</span>
+                            </div>
+                            <div class="spec-item">
+                                <span class="spec-label">Đường kính</span>
+                                <span class="spec-value">24-26 mm</span>
+                            </div>
+                            <div class="spec-item">
+                                <span class="spec-label">Kiểu chữ</span>
+                                <span class="spec-value">Hành thư/Chân thư</span>
+                            </div>
+                        </div>
+
+                        <div class="description">
+                            Mặc dù Việt Nam đã độc lập, tiền Tống vẫn lưu hành rộng rãi do thương mại phát triển. Đây là một trong nhiều loại tiền Tống được sử dụng tại Đại Việt.
+                        </div>
+
+                        <div class="features-list">
+                            <h5>Đặc điểm nổi bật</h5>
+                            <ul>
+                                <li>Nhiều phiên bản khác nhau</li>
+                                <li>Chữ viết đẹp, thuật thư pháp cao</li>
+                                <li>Lưu thông qua thương mại</li>
+                                <li>Song hành với tiền Đại Việt</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Thiên Thánh Nguyên Bảo -->
+                <div class="currency-card">
+                    <div class="coin-image">
+                        <img src="china_coin/thienthanhnguyenbao.jpg" alt="Thiên Thánh">
+                    </div>
+                    <div class="card-content">
+                        <span class="period-badge">Nhà Tống</span>
+                        <h2 class="currency-name">Thiên Thánh Nguyên Bảo</h2>
+                        <div class="chinese-name">天聖元寶</div>
+                        <div class="period-time">
+                            <i class="bi bi-calendar-range"></i>
+                            1023 - 1032
+                        </div>
+                        
+                        <div class="specs-grid">
+                            <div class="spec-item">
+                                <span class="spec-label">Chất liệu</span>
+                                <span class="spec-value">Đồng/Sắt</span>
+                            </div>
+                            <div class="spec-item">
+                                <span class="spec-label">Trọng lượng</span>
+                                <span class="spec-value">3.5-4 gram</span>
+                            </div>
+                            <div class="spec-item">
+                                <span class="spec-label">Đường kính</span>
+                                <span class="spec-value">24-25 mm</span>
+                            </div>
+                            <div class="spec-item">
+                                <span class="spec-label">Thời kỳ</span>
+                                <span class="spec-value">Tống Nhân Tông</span>
+                            </div>
+                        </div>
+
+                        <div class="description">
+                            Tiền niên hiệu Thiên Thánh, lưu hành thời Tống Nhân Tông. Thường được tìm thấy ở các di tích thời Lý tại Việt Nam, chứng tỏ quan hệ thương mại sôi động.
+                        </div>
+
+                        <div class="features-list">
+                            <h5>Đặc điểm nổi bật</h5>
+                            <ul>
+                                <li>Chữ Chân thư thanh tú</li>
+                                <li>Phổ biến tại Đại Việt thời Lý</li>
+                                <li>Chất lượng đúc tốt</li>
+                                <li>Nhiều biến thể về kích cỡ</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Vĩnh Lạc Thông Bảo -->
+                <div class="currency-card">
+                    <div class="coin-image">
+                        <img src="/china_coin/vinhlacthongbao.jpg" alt="Vĩnh Lạc">
+                    </div>
+                    <div class="card-content">
+                        <span class="period-badge">Nhà Minh</span>
+                        <h2 class="currency-name">Vĩnh Lạc Thông Bảo</h2>
+                        <div class="chinese-name">永樂通寶</div>
+                        <div class="period-time">
+                            <i class="bi bi-calendar-range"></i>
+                            1403 - 1424
+                        </div>
+                        
+                        <div class="specs-grid">
+                            <div class="spec-item">
+                                <span class="spec-label">Chất liệu</span>
+                                <span class="spec-value">Đồng</span>
+                            </div>
+                            <div class="spec-item">
+                                <span class="spec-label">Trọng lượng</span>
+                                <span class="spec-value">4-5 gram</span>
+                            </div>
+                            <div class="spec-item">
+                                <span class="spec-label">Đường kính</span>
+                                <span class="spec-value">25-26 mm</span>
+                            </div>
+                            <div class="spec-item">
+                                <span class="spec-label">Thời kỳ VN</span>
+                                <span class="spec-value">Thuộc Minh</span>
+                            </div>
+                        </div>
+
+                        <div class="description">
+                            Lưu hành bắt buộc tại Đại Việt trong thời thuộc Minh (1407-1427). Sau khi Lê Lợi khôi phục độc lập, tiền này vẫn lưu hành do khan hiếm tiền mới.
+                        </div>
+
+                        <div class="features-list">
+                            <h5>Đặc điểm nổi bật</h5>
+                            <ul>
+                                <li>Chữ Chân thư đậm nét</li>
+                                <li>Thời thuộc Minh lần cuối</li>
+                                <li>Đúc số lượng lớn</li>
+                                <li>Phổ biến ở miền Bắc VN</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Càn Long Thông Bảo -->
+                <div class="currency-card">
+                    <div class="coin-image">
+                        <img src="/china_coin/canlongthongbao.jpg" alt="Càn Long">
+                    </div>
+                    <div class="card-content">
+                        <span class="period-badge">Nhà Thanh</span>
+                        <h2 class="currency-name">Càn Long Thông Bảo</h2>
+                        <div class="chinese-name">乾隆通寶</div>
+                        <div class="period-time">
+                            <i class="bi bi-calendar-range"></i>
+                            1736 - 1795
+                        </div>
+                        
+                        <div class="specs-grid">
+                            <div class="spec-item">
+                                <span class="spec-label">Chất liệu</span>
+                                <span class="spec-value">Đồng/Hoàng đồng</span>
+                            </div>
+                            <div class="spec-item">
+                                <div class="spec-item">
+                                <span class="spec-label">Trọng lượng</span>
+                                <span class="spec-value">3.5-4.5 gram</span>
+                            </div>
+                            <div class="spec-item">
+                                <span class="spec-label">Đường kính</span>
+                                <span class="spec-value">22-27 mm</span>
+                            </div>
+                            <div class="spec-item">
+                                <span class="spec-label">Mặt sau</span>
+                                <span class="spec-value">Chữ Mãn/Hán</span>
+                            </div>
+                        </div>
+
+                        <div class="description">
+                            Tiền Thanh lưu hành qua thương mại biên giới. Mặt sau có chữ Mãn hoặc tên xưởng đúc. Được tìm thấy nhiều ở các vùng biên giới phía Bắc và các thành phố cảng.
+                        </div>
+
+                        <div class="features-list">
+                            <h5>Đặc điểm nổi bật</h5>
+                            <ul>
+                                <li>Chữ Chân thư chuẩn mực</li>
+                                <li>Mặt sau có chữ Mãn Châu</li>
+                                <li>Nhiều xưởng đúc khác nhau</li>
+                                <li>Lưu thông qua thương mại</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+
+        <div class="scroll-hint">
+            <i class="bi bi-arrow-left-right"></i> Cuộn ngang để xem toàn bộ dòng thời gian
+        </div>
+
+        <div class="legend">
+            <h3><i class="bi bi-book"></i> Tìm hiểu thêm</h3>
+            <div class="legend-content">
+                <div class="legend-item">
+                    <h4>Thời Bắc thuộc</h4>
+                    <p>Tiền Trung Quốc là tiền tệ chính thức bắt buộc. Bao gồm Bán Lượng, Ngũ Thù, Khai Nguyên Thông Bảo và tiền các triều đại Trung Hoa.</p>
+                </div>
+                <div class="legend-item">
+                    <h4>Sau độc lập</h4>
+                    <p>Việt Nam tự đúc tiền riêng nhưng tiền Trung Quốc vẫn lưu hành do thương mại phát triển. Hai loại tiền song hành trong nhiều thế kỷ.</p>
+                </div>
+                <div class="legend-item">
+                    <h4>Ảnh hưởng văn hóa</h4>
+                    <p>Tiền Việt Nam học tập mô hình Trung Quốc: hình tròn lỗ vuông, chữ Hán, cách đặt tên "Thông Bảo", "Nguyên Bảo", "Trọng Bảo".</p>
+                </div>
+                <div class="legend-item">
+                    <h4>Di sản khảo cổ</h4>
+                    <p>Tiền Trung Quốc cổ được tìm thấy nhiều tại các di tích Cổ Loa, Luy Lâu, Thăng Long và các thành phố cổ, là bằng chứng giao lưu văn hóa.</p>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
+    <script>
+        const slider = document.querySelector('.timeline-scroll');
+        let isDown = false;
+        let startX;
+        let scrollLeft;
+
+        slider.addEventListener('mousedown', (e) => {
+            isDown = true;
+            slider.classList.add('dragging');
+            startX = e.pageX - slider.offsetLeft;
+            scrollLeft = slider.scrollLeft;
+        });
+
+        slider.addEventListener('mouseleave', () => {
+            isDown = false;
+            slider.classList.remove('dragging');
+        });
+
+        slider.addEventListener('mouseup', () => {
+            isDown = false;
+            slider.classList.remove('dragging');
+        });
+
+        slider.addEventListener('mousemove', (e) => {
+            if (!isDown) return;
+            e.preventDefault();
+            const x = e.pageX - slider.offsetLeft;
+            const walk = (x - startX) * 2; // Tăng *2 để kéo nhanh hơn
+            slider.scrollLeft = scrollLeft - walk;
+        });
+    </script>
+</body>
+</html>
