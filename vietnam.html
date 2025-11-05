@@ -296,7 +296,7 @@
                 </p>
             </div>
             
-            <div class="period-card ancient">
+            <div onclick="window.location.href='Hai Bà Trưng/haibatrung.html'" class="period-card ancient">
                 <span class="category-badge badge-ancient">Khởi nghĩa</span>
                 <div class="period-title">Hai Bà Trưng</div>
                 <div class="period-years">40 – 43</div>
@@ -304,7 +304,7 @@
                     Thời kỳ độc lập ngắn ngủi do Trưng Trắc và Trưng Nhị lãnh đạo. Khôi phục phần nào nền kinh tế và tiền tệ bản địa.
                 </p>
             </div>
-            <div class="period-card ancient">
+            <div onclick="window.location.href='Bắc thuộc 2/bacthuoc2.html'" class="period-card ancient">
                 <span class="category-badge badge-ancient">Khởi nghĩa</span>
                 <div class="period-title">Bắc thuộc</div>
                 <div class="period-years">43 – 544</div>
@@ -314,7 +314,7 @@
             </div>
             
             <!-- Thời kỳ Trung đại -->
-            <div class="period-card medieval">
+            <div onclick="window.location.href='Tiền Lý/tienly.html'" class="period-card medieval">
                 <span class="category-badge badge-medieval">Thời kỳ Trung đại</span>
                 <div class="period-title">Nhà Tiền Lý</div>
                 <div class="period-years">544 – 602</div>
@@ -323,7 +323,7 @@
                 </p>
             </div>
             
-            <div class="period-card medieval">
+            <div onclick="window.location.href='Bắc thuộc 3/bacthuoc3.html'" class="period-card medieval">
                 <span class="category-badge badge-occupation">Bắc thuộc</span>
                 <div class="period-title">Bắc thuộc</div>
                 <div class="period-years">602 – 905</div>
@@ -332,7 +332,7 @@
                 </p>
             </div>
             
-            <div class="period-card medieval">
+            <div onclick="window.location.href='Nhà Ngô/nhango.html'" class="period-card medieval">
                 <span class="category-badge badge-medieval">Độc lập</span>
                 <div class="period-title">Nhà Ngô</div>
                 <div class="period-years">939 – 965</div>
@@ -341,7 +341,7 @@
                 </p>
             </div>
             
-            <div class="period-card medieval">
+            <div onclick="window.location.href='Nhà Đinh/nhadinh.html'" class="period-card medieval">
                 <span class="category-badge badge-medieval">Trung đại</span>
                 <div class="period-title">Nhà Đinh</div>
                 <div class="period-years">968 – 980</div>
@@ -350,7 +350,7 @@
                 </p>
             </div>
             
-            <div class="period-card medieval">
+            <div onclick="window.location.href='Nhà Tiền Lê/nhatienle.html'" class="period-card medieval">
                 <span class="category-badge badge-medieval">Trung đại</span>
                 <div class="period-title">Nhà Tiền Lê</div>
                 <div class="period-years">980 – 1009</div>
@@ -472,5 +472,49 @@
     </div>
     
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
+ <script>
+        // Hàm set cookie
+        function setCookie(name, value, days) {
+            const d = new Date();
+            d.setTime(d.getTime() + (days * 24 * 60 * 60 * 1000));
+            const expires = "expires=" + d.toUTCString();
+            document.cookie = name + "=" + value + ";" + expires + ";path=/";
+        }
+
+        // Hàm get cookie
+        function getCookie(name) {
+            const nameEQ = name + "=";
+            const ca = document.cookie.split(';');
+            for(let i = 0; i < ca.length; i++) {
+                let c = ca[i];
+                while (c.charAt(0) == ' ') c = c.substring(1, c.length);
+                if (c.indexOf(nameEQ) == 0) return c.substring(nameEQ.length, c.length);
+            }
+            return null;
+        }
+
+        // Lưu vị trí cuộn
+        let scrollTimeout;
+        window.addEventListener('scroll', function() {
+            clearTimeout(scrollTimeout);
+            scrollTimeout = setTimeout(function() {
+                const scrollPosition = window.pageYOffset || document.documentElement.scrollTop;
+                setCookie('scrollPosition', scrollPosition, 7); // Lưu trong 7 ngày
+            }, 150); // Debounce 150ms để tránh lưu quá nhiều
+        });
+
+        // Khôi phục vị trí cuộn khi tải trang
+        window.addEventListener('load', function() {
+            const savedPosition = getCookie('scrollPosition');
+            if (savedPosition !== null) {
+                setTimeout(function() {
+                    window.scrollTo({
+                        top: parseInt(savedPosition),
+                        behavior: 'smooth'
+                    });
+                }, 100); // Delay nhỏ để đảm bảo trang đã render xong
+            }
+        });
+    </script>
 </body>
 </html>
