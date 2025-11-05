@@ -1,0 +1,274 @@
+<!DOCTYPE html>
+
+<html lang="vi"> <head> <meta charset="UTF-8" /> <meta name="viewport" content="width=device-width, initial-scale=1.0" /> <title>Thời kỳ sau Thống nhất - Bộ tiền Thống nhất</title> <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet" /> <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.1/font/bootstrap-icons.css" /> <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" /> <style> body { background: url("../image/phap-thuoc.jpg") no-repeat center center fixed; background-size: cover; min-height: 100vh; font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif; position: relative; padding: 2rem 0; }
+
+  body::before {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(255, 255, 255, 0.9);
+    z-index: 0;
+  }
+
+  .container {
+    position: relative;
+    z-index: 1;
+    max-width: 1100px;
+  }
+
+  .header-section {
+    background: linear-gradient(135deg, #d4463d 0%, #952f2a 100%);
+    border-radius: 20px;
+    padding: 3rem;
+    margin-bottom: 2rem;
+    box-shadow: 0 10px 40px rgba(0, 0, 0, 0.4);
+    animation: fadeInDown 0.8s ease-out;
+    text-align: center;
+    border: 2px solid rgba(255, 215, 0, 0.3);
+  }
+
+  .header-section h1 {
+    color: #ffd700;
+    font-size: 2.5rem;
+    font-weight: 700;
+    margin-bottom: 1rem;
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3);
+  }
+
+  .header-section p {
+    color: rgba(255, 255, 255, 0.95);
+    font-size: 1.2rem;
+    margin: 0;
+    line-height: 1.6;
+  }
+
+  .back-button {
+    background: white;
+    color: #d4463d;
+    border: none;
+    padding: 0.8rem 1.5rem;
+    border-radius: 10px;
+    font-weight: 600;
+    text-decoration: none;
+    display: inline-flex;
+    align-items: center;
+    gap: 0.5rem;
+    transition: all 0.3s ease;
+    margin-bottom: 2rem;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+  }
+
+  .back-button:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 6px 20px rgba(0, 0, 0, 0.2);
+    background: #ffd700;
+    color: #d4463d;
+  }
+
+  .info-card {
+    background: white;
+    border-radius: 20px;
+    padding: 2.5rem;
+    margin-bottom: 2rem;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+    animation: fadeInUp 0.8s ease-out;
+  }
+
+  .info-card h2 {
+    color: #d4463d;
+    font-size: 1.9rem;
+    font-weight: 700;
+    margin-bottom: 1.5rem;
+    border-bottom: 3px solid #ffd700;
+    padding-bottom: 0.5rem;
+  }
+
+  .info-card h3 {
+    color: #952f2a;
+    font-size: 1.5rem;
+    font-weight: 600;
+    margin-top: 2rem;
+    margin-bottom: 1rem;
+  }
+
+  .info-card p,
+  .info-card ul {
+    color: #555;
+    font-size: 1.05rem;
+    line-height: 1.8;
+    margin-bottom: 1rem;
+  }
+
+  .info-card li {
+    margin-bottom: 0.8rem;
+  }
+
+  .highlight-box {
+    background: linear-gradient(
+      135deg,
+      rgba(212, 70, 61, 0.1) 0%,
+      rgba(149, 47, 42, 0.1) 100%
+    );
+    border-left: 4px solid #d4463d;
+    padding: 1.5rem;
+    border-radius: 10px;
+    margin: 1.5rem 0;
+  }
+
+  .highlight-box h4 {
+    color: #d4463d;
+    font-weight: 700;
+    margin-bottom: 0.8rem;
+  }
+
+  @keyframes fadeInDown {
+    from {
+      opacity: 0;
+      transform: translateY(-30px);
+    }
+    to {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  }
+
+  @keyframes fadeInUp {
+    from {
+      opacity: 0;
+      transform: translateY(30px);
+    }
+    to {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  }
+
+  @media (max-width: 768px) {
+    .header-section h1 {
+      font-size: 1.8rem;
+    }
+
+    .header-section p {
+      font-size: 1rem;
+    }
+
+    .info-card {
+      padding: 1.5rem;
+    }
+
+    .back-button {
+      margin-bottom: 1rem;
+    }
+  }
+</style>
+</head> <body> <div class="container"> <div style="display: flex; gap: 1rem; flex-wrap: wrap"> <a href="../vietnam.html" class="back-button"> <i class="bi bi-arrow-left-circle"></i> Quay lại Timeline </a> </div>
+
+  <div class="header-section">
+    <h1><i class="fas fa-landmark"></i> Thời kì đầu sau Thống nhất</h1>
+    <p>Bộ tiền Thống nhất (1978-1985)</p>
+  </div>
+
+  <div class="info-card">
+    <h2><i class="bi bi-info-circle"></i> Bối cảnh lịch sử</h2>
+    <p>
+      Do chiến tranh kéo dài, bị cấm vận và cơ chế quản lý kém linh hoạt,
+      kinh tế rơi vào khủng hoảng, lạm phát cao, thiếu lương thực, hàng hóa
+      khan hiếm. Về chính trị, đất nước thống nhất, củng cố hệ thống XHCN,
+      nhưng quan hệ quốc tế hạn chế chủ yếu với Liên Xô và các nước XHCN,
+      gặp nhiều thách thức về an ninh và đối ngoại.
+    </p>
+
+    <div class="highlight-box">
+      <h4><i class="bi bi-clock-history"></i> Khoảng thời gian</h4>
+      <p><strong>1978 - 1985</strong></p>
+    </div>
+  </div>
+  <div class="info-card text-center">
+      <img class="img-fluid" alt="Bộ tiền 1951"
+        src="https://cdn.tienphong.vn/images/ac3d1265dec14ba4272ec8bc2394b48da9171f846f2d2fd1d46a779522461b22f55f4d4cf291e10c38303c5c973ba32b/nam81.jpg"
+      />
+    </div>
+  <div class="info-card">
+    <div class="icon-box">
+      <div>
+        <h2 style="margin-bottom: 0">Đặc điểm bộ tiền</h2>
+      </div>
+    </div>
+
+    <h3>Thông tin phát hành (Chữ in trên tiền)</h3>
+    <ul>
+      <li>
+        <strong>"Cộng hòa Xã hội Chủ nghĩa Việt Nam"</strong> — quốc hiệu
+        chính thức
+      </li>
+      <li>
+        <strong>"Ngân hàng Nhà nước Việt Nam"</strong> — tên tổ chức phát
+        hành
+      </li>
+      <li>Mệnh giá bằng chữ & số</li>
+      <li>Một số tờ có yếu tố hoa văn truyền thống</li>
+    </ul>
+
+    <h3>Đặc điểm kỹ thuật</h3>
+    <ul>
+      <li>Chất liệu: Giấy thường; một số xu bằng nhôm.</li>
+      <li>
+        Hình ảnh chủ yếu: Chân dung Chủ tịch Hồ Chí Minh, công – nông –
+        quân, nhà máy, ruộng lúa, và các biểu tượng tiêu biểu của đất nước.
+      </li>
+    </ul>
+
+    <div class="highlight-box">
+      <h4><i class="bi bi-cash-stack"></i> Mệnh giá tiêu biểu</h4>
+      <p>
+        Tiền giấy: 5 hào, 1đ, 5đ, 10đ, 20đ, 30đ, 50đ, 100đ. <br />Tiền xu:
+        1 hào, 2 hào, 5 hào.
+      </p>
+    </div>
+  </div>
+
+  <div class="info-card">
+    <h2><i class="bi bi-star"></i> Ý nghĩa lịch sử</h2>
+
+    <div class="highlight-box">
+      <h4><i class="fas fa-landmark"></i> Khẳng định thống nhất</h4>
+      <p>Khẳng định thống nhất kinh tế – tài chính toàn lãnh thổ.</p>
+    </div>
+
+    <div class="highlight-box">
+      <h4><i class="fas fa-flag"></i> Xóa bỏ tiền tệ cũ</h4>
+      <p>Xóa bỏ song song hai hệ thống tiền tệ cũ (ở miền Bắc và miền Nam).</p>
+    </div>
+
+    <div class="highlight-box">
+      <h4><i class="fas fa-scroll"></i> Nền tảng cải cách</h4>
+      <p>
+        Tạo nền tảng cho các cải cách tiền tệ sau này (1985, rồi đưa vào thời
+        kỳ đổi mới 1986).
+      </p>
+    </div>
+  </div>
+
+  <div class="info-card">
+    <h2><i class="bi bi-lightbulb"></i> Kết luận</h2>
+    <p>
+      Bộ tiền Thống nhất là bộ tiền do Nhà nước Việt Nam phát hành sau khi
+      đất nước thống nhất năm 1975, nhằm thiết lập hệ thống tiền tệ chung
+      cho cả nước. Bộ tiền này được phát hành năm 1978, thay thế các loại
+      tiền đang lưu hành riêng ở miền Bắc và miền Nam, thể hiện bước chuyển
+      quan trọng trong việc ổn định kinh tế, quản lý tài chính và khẳng định
+      chủ quyền quốc gia. Tiền được in trên chất liệu giấy, mang hình ảnh các
+      biểu tượng tiêu biểu của đất nước như công – nông – quân, nhà máy,
+      ruộng lúa, và chân dung Chủ tịch Hồ Chí Minh, phản ánh định hướng xã
+      hội chủ nghĩa và nhiệm vụ xây dựng kinh tế sau chiến tranh. Bộ tiền này
+      sử dụng suốt giai đoạn đầu tái thiết đất nước và chỉ được thay thế khi
+      đổi tiền năm 1985 nhằm thực hiện cải cách kinh tế thời kỳ đầu Đổi mới.
+    </p>
+  </div>
+</div>
+
+<script src="[https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js](https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js)"></script>
+</body> </html>

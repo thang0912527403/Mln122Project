@@ -1,0 +1,439 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Thời kỳ Pháp thuộc - Tiền Đông Dương</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.1/font/bootstrap-icons.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" />
+    <style>
+        body {
+            background: url('../image/phap-thuoc.jpg') no-repeat center center fixed;
+            background-size: cover;
+            min-height: 100vh;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            position: relative;
+            padding: 2rem 0;
+        }
+        
+        body::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: 
+                radial-gradient(circle at 20% 30%, rgba(255,215,0,0.1) 0%, transparent 50%),
+                radial-gradient(circle at 80% 70%, rgba(192,192,192,0.1) 0%, transparent 50%);
+            z-index: 0;
+        }
+        
+        .container {
+            position: relative;
+            z-index: 1;
+            max-width: 1100px;
+        }
+        
+        .header-section {
+            background: linear-gradient(135deg, #2c5f7e 0%, #1a3a52 100%);
+            border-radius: 20px;
+            padding: 3rem;
+            margin-bottom: 2rem;
+            box-shadow: 0 10px 40px rgba(0,0,0,0.4);
+            animation: fadeInDown 0.8s ease-out;
+            text-align: center;
+            border: 2px solid rgba(255,215,0,0.3);
+        }
+        
+        .header-section h1 {
+            color: #FFD700;
+            font-size: 2.5rem;
+            font-weight: 700;
+            margin-bottom: 1rem;
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.3);
+        }
+        
+        .header-section p {
+            color: rgba(255,255,255,0.95);
+            font-size: 1.2rem;
+            margin: 0;
+            line-height: 1.6;
+        }
+        
+        .back-button {
+            background: white;
+            color: #1a3a52;
+            border: none;
+            padding: 0.8rem 1.5rem;
+            border-radius: 10px;
+            font-weight: 600;
+            text-decoration: none;
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+            transition: all 0.3s ease;
+            margin-bottom: 2rem;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.3);
+        }
+        
+        .back-button:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 6px 20px rgba(0,0,0,0.4);
+            background: #FFD700;
+            color: #1a3a52;
+        }
+        
+        .info-card {
+            background: white;
+            border-radius: 20px;
+            padding: 2.5rem;
+            margin-bottom: 2rem;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.3);
+            animation: fadeInUp 0.8s ease-out;
+        }
+        
+        .info-card h2 {
+            color: #1a3a52;
+            font-size: 1.9rem;
+            font-weight: 700;
+            margin-bottom: 1.5rem;
+            border-bottom: 3px solid #FFD700;
+            padding-bottom: 0.5rem;
+        }
+        
+        .info-card h3 {
+            color: #2c5f7e;
+            font-size: 1.5rem;
+            font-weight: 600;
+            margin-top: 2rem;
+            margin-bottom: 1rem;
+        }
+        
+        .info-card p {
+            color: #555;
+            font-size: 1.05rem;
+            line-height: 1.8;
+            margin-bottom: 1rem;
+        }
+        
+        .info-card ul {
+            color: #555;
+            line-height: 1.8;
+            margin-left: 1.5rem;
+        }
+        
+        .info-card li {
+            margin-bottom: 0.8rem;
+        }
+        
+        .highlight-box {
+            background: linear-gradient(135deg, rgba(26, 58, 82, 0.1) 0%, rgba(44, 95, 126, 0.1) 100%);
+            border-left: 4px solid #2c5f7e;
+            padding: 1.5rem;
+            border-radius: 10px;
+            margin: 1.5rem 0;
+        }
+        
+        .highlight-box h4 {
+            color: #1a3a52;
+            font-weight: 700;
+            margin-bottom: 0.8rem;
+        }
+        
+        .currency-showcase {
+            background: linear-gradient(135deg, rgba(255,215,0,0.15) 0%, rgba(192,192,192,0.15) 100%);
+            border: 2px solid #FFD700;
+            border-radius: 15px;
+            padding: 2rem;
+            margin: 2rem 0;
+        }
+        
+        .currency-showcase h3 {
+            color: #1a3a52;
+            text-align: center;
+            margin-bottom: 1.5rem;
+            font-size: 1.6rem;
+        }
+        
+        .currency-type {
+            background: white;
+            border-radius: 12px;
+            padding: 1.5rem;
+            margin-bottom: 1.5rem;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+        }
+        
+        .currency-type h4 {
+            color: #2c5f7e;
+            font-weight: 700;
+            margin-bottom: 1rem;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+        
+        .icon-box {
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+            margin-bottom: 1.5rem;
+        }
+        
+        .icon-box i {
+            font-size: 2.5rem;
+            color: #FFD700;
+        }
+        
+        .icon-box h3 {
+            margin: 0;
+        }
+        
+        .banknote-design {
+            background: linear-gradient(135deg, #f8f9fa 0%, #e9ecef 100%);
+            border-radius: 15px;
+            padding: 2rem;
+            margin: 2rem 0;
+            border: 3px solid #2c5f7e;
+        }
+        
+        .banknote-side {
+            background: white;
+            border-radius: 10px;
+            padding: 1.5rem;
+            margin-bottom: 1.5rem;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+        }
+        
+        .banknote-side h4 {
+            color: #1a3a52;
+            font-weight: 700;
+            margin-bottom: 1rem;
+            font-size: 1.3rem;
+        }
+        
+        .significance-box {
+            background: linear-gradient(135deg, rgba(255,215,0,0.2) 0%, rgba(255,215,0,0.1) 100%);
+            border: 2px solid #FFD700;
+            border-radius: 15px;
+            padding: 2rem;
+            margin: 2rem 0;
+        }
+        
+        .significance-box h3 {
+            color: #1a3a52;
+            text-align: center;
+            margin-bottom: 1.5rem;
+        }
+        
+        @keyframes fadeInDown {
+            from {
+                opacity: 0;
+                transform: translateY(-30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+        
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+        
+        @media (max-width: 768px) {
+            .header-section h1 {
+                font-size: 1.8rem;
+            }
+            
+            .header-section p {
+                font-size: 1rem;
+            }
+            
+            .info-card {
+                padding: 1.5rem;
+            }
+            
+            .back-button {
+                margin-bottom: 1rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div style="display: flex; gap: 1rem; flex-wrap: wrap;">
+            <a href="../vietnam.html" class="back-button">
+                <i class="bi bi-arrow-left-circle"></i> Quay lại Timeline
+            </a>
+        </div>
+
+        <div class="header-section">
+            <h1><i class="fas fa-landmark"></i> Thời kỳ Pháp thuộc</h1>
+            <p>Tiền Đông Dương - Công cụ thống trị kinh tế thuộc địa (1885-1945)</p>
+        </div>
+        
+        <div class="info-card">
+            <h2><i class="bi bi-info-circle"></i> Giới thiệu chung</h2>
+            <p>
+                Tiền giấy do Ngân hàng Đông Dương (Banque de l'Indochine) phát hành là loại tiền giấy đầu tiên được sử dụng chính thức tại Việt Nam dưới thời Pháp thuộc, đánh dấu bước chuyển từ tiền kim loại truyền thống sang hệ thống tiền tệ hiện đại theo mô hình châu Âu.
+            </p>
+            
+            <div class="highlight-box">
+                <h4><i class="bi bi-clock-history"></i> Khoảng thời gian</h4>
+                <p><strong>1885 - 1945</strong><br>
+                Từ khi Pháp chính thức thành lập Liên bang Đông Dương cho đến khi Nhật đảo chính Pháp và Cách mạng Tháng Tám bùng nổ.</p>
+            </div>
+        </div>
+
+        <div class="info-card">
+            <div class="icon-box">
+                <i class="fas fa-building-columns"></i>
+                <div>
+                    <h2 style="margin-bottom: 0;">Bối cảnh lịch sử - kinh tế</h2>
+                </div>
+            </div>
+            
+            <h3>Chính sách kinh tế thuộc địa</h3>
+            <p>
+                Pháp biến Đông Dương thành nguồn khai thác nguyên liệu và thị trường tiêu thụ hàng hóa. Kinh tế chuyển sang kiểu thuộc địa – nửa phong kiến:
+            </p>
+            <ul>
+                <li><strong>Nông nghiệp:</strong> Trồng lúa, cao su, cà phê, than để xuất khẩu về Pháp</li>
+                <li><strong>Công nghiệp:</strong> Khai thác mỏ và đồn điền phát triển, nhưng lợi nhuận chảy về Pháp</li>
+                <li><strong>Bóc lột:</strong> Nông dân Việt bị bóc lột nặng, đất tập trung vào tay chủ đồn điền Pháp</li>
+            </ul>
+
+            <h3>Sự ra đời của Tiền Đông Dương (1885)</h3>
+            <p>Tiền Đông Dương (Piastre de l'Indochine) được phát hành nhằm:</p>
+            <ul>
+                <li><strong>Thống nhất hệ thống tiền tệ</strong> trên toàn Liên bang Đông Dương</li>
+                <li><strong>Kiểm soát dòng tiền</strong> và thu thuế hiệu quả hơn</li>
+                <li><strong>Gắn giá trị với đồng Franc Pháp</strong> để đảm bảo ổn định, nhưng thực chất là công cụ chi phối kinh tế thuộc địa</li>
+            </ul>
+        </div>
+
+        <div class="currency-showcase">
+            <h3><i class="fas fa-coins"></i> Đặc điểm tiền xu Đông Dương</h3>
+            
+            <div class="currency-type">
+                <h4><i class="bi bi-circle"></i> Hình dạng</h4>
+                <p>Hình tròn, không lỗ (theo phong cách châu Âu), khác hoàn toàn với tiền xu lỗ vuông truyền thống của Việt Nam.</p>
+            </div>
+
+            <div class="currency-type">
+                <h4><i class="fas fa-medal"></i> Chất liệu</h4>
+                <ul>
+                    <li><strong>Bạc (0,900 fineness):</strong> Cho mệnh giá 1 Piastre</li>
+                    <li><strong>Niken hoặc đồng:</strong> Cho mệnh giá nhỏ (1, 5, 10, 20 cent)</li>
+                </ul>
+            </div>
+
+            <div class="currency-type">
+                <h4><i class="bi bi-cash-stack"></i> Mệnh giá tiền xu</h4>
+                <p>1 cent, 5 cent, 10 cent, 20 cent, 50 cent, 1 Piastre</p>
+            </div>
+        </div>
+
+        <div class="info-card">
+            <div class="icon-box">
+                <i class="fas fa-money-bill-wave"></i>
+                <div>
+                    <h2 style="margin-bottom: 0;">Đặc điểm tiền giấy Đông Dương</h2>
+                </div>
+            </div>
+
+            <h3>Kích thước và kỹ thuật in</h3>
+            <ul>
+                <li><strong>Kích thước:</strong> Lớn (giống banknote cổ điển châu Âu)</li>
+                <li><strong>Màu sắc:</strong> In nhiều màu, rất tinh xảo</li>
+                <li><strong>Mệnh giá:</strong> 1, 5, 10, 20, 100 Piastre (về sau có cả tiền xu centime)</li>
+            </ul>
+
+            <div class="banknote-design">
+                <h3 style="text-align: center; color: #1a3a52; margin-bottom: 2rem;">
+                    <i class="fas fa-palette"></i> Thiết kế tiền giấy
+                </h3>
+
+                <div class="banknote-side">
+                    <h4><i class="bi bi-card-heading"></i> Mặt trước</h4>
+                    <ul>
+                        <li>Chữ <strong>"BANQUE DE L'INDOCHINE"</strong> (Ngân hàng Đông Dương) in to ở đầu</li>
+                        <li>Dòng chữ <strong>"Payable au porteur"</strong> (Trả cho người cầm phiếu) – nghĩa là người giữ tờ này có quyền nhận giá trị tương đương bằng bạc thật</li>
+                        <li>In hình nhân vật hoặc cảnh tượng mang phong cách Á Đông:
+                            <ul>
+                                <li>Nông dân gặt lúa</li>
+                                <li>Thương nhân buôn bán</li>
+                                <li>Cô gái Việt Nam đội nón lá</li>
+                                <li>Chùa chiền, cổng thành, rồng phượng</li>
+                            </ul>
+                        </li>
+                        <li>Có chữ ký của <strong>Tổng Giám đốc</strong> và <strong>Giám đốc chi nhánh</strong> Sài Gòn / Hà Nội</li>
+                    </ul>
+                </div>
+
+                <div class="banknote-side">
+                    <h4><i class="bi bi-card-image"></i> Mặt sau</h4>
+                    <ul>
+                        <li>In cảnh thiên nhiên hoặc công trình biểu tượng:
+                            <ul>
+                                <li>Cầu Long Biên</li>
+                                <li>Chợ Bến Thành</li>
+                                <li>Ruộng lúa, núi non, sông nước</li>
+                            </ul>
+                        </li>
+                        <li>Hoa văn phương Đông kết hợp họa tiết cổ điển Pháp</li>
+                        <li>Dòng chữ nhỏ: <strong>"Contrefaire ou altérer les billets de banque est puni par la loi."</strong> (Làm giả hoặc sửa đổi giấy bạc bị trừng phạt theo luật pháp)</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+
+        <div class="significance-box">
+            <h3><i class="bi bi-star"></i> Ý nghĩa lịch sử</h3>
+            
+            <div class="highlight-box">
+                <h4><i class="fas fa-flag"></i> Khẳng định quyền lực thực dân</h4>
+                <p>
+                    Khẳng định quyền kiểm soát kinh tế của Pháp, khi mọi giao dịch lớn đều phải dùng tiền Đông Dương.
+                </p>
+            </div>
+
+            <div class="highlight-box">
+                <h4><i class="fas fa-link"></i> Gắn kết với hệ thống tài chính Pháp</h4>
+                <p>
+                    Gắn chặt nền kinh tế Việt Nam vào hệ thống tài chính Pháp, đặc biệt trong thương mại và thuế khóa.
+                </p>
+            </div>
+
+            <div class="highlight-box">
+                <h4><i class="fas fa-exchange-alt"></i> Thay đổi tập quán tiền tệ</h4>
+                <p>
+                    Thay đổi căn bản tập quán tiền tệ truyền thống, mở đầu thời kỳ tiền giấy hiện đại tại Việt Nam.
+                </p>
+            </div>
+        </div>
+
+        <div class="info-card">
+            <h2><i class="bi bi-lightbulb"></i> Kết luận</h2>
+            <p>
+                Tiền Đông Dương không chỉ là phương tiện trao đổi mà còn là biểu tượng của sự thống trị thực dân Pháp tại Việt Nam. Nó đánh dấu sự chuyển đổi sâu sắc trong nền kinh tế Việt Nam từ hệ thống tiền tệ truyền thống sang hệ thống hiện đại theo mô hình phương Tây, đồng thời là công cụ để Pháp bóc lột và kiểm soát nền kinh tế thuộc địa một cách có hệ thống.
+            </p>
+            
+            <p>
+                Mặc dù mang dấu ấn của chế độ thực dân, tiền Đông Dương đã góp phần hiện đại hóa hệ thống tiền tệ Việt Nam, tạo tiền đề cho sự phát triển của hệ thống ngân hàng và tài chính hiện đại sau này.
+            </p>
+        </div>
+    </div>
+    
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
+</body>
+</html>
