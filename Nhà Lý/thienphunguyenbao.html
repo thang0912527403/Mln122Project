@@ -1,0 +1,372 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Thiên phù nguyên bảo- Chi tiết</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.1/font/bootstrap-icons.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        body {
+            background: url('/image/homebackground.jpg') no-repeat center center fixed;
+            background-size: cover;
+            min-height: 100vh;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            position: relative;
+            padding: 2rem 0;
+        }
+        
+        body::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.5);
+            z-index: 0;
+        }
+        
+        .container {
+            position: relative;
+            z-index: 1;
+            max-width: 1200px;
+        }
+        
+        .back-button {
+            background: white;
+            color: #DAA520;
+            border: none;
+            padding: 0.8rem 1.5rem;
+            border-radius: 10px;
+            font-weight: 600;
+            text-decoration: none;
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+            transition: all 0.3s ease;
+            margin-bottom: 2rem;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.2);
+        }
+        
+        .back-button:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 6px 20px rgba(0,0,0,0.3);
+            color: #DAA520;
+        }
+        
+        .detail-container {
+            background: white;
+            border-radius: 20px;
+            overflow: hidden;
+            box-shadow: 0 10px 40px rgba(0,0,0,0.3);
+            animation: fadeInUp 0.8s ease-out;
+        }
+        
+        .header-section {
+            background: linear-gradient(135deg, #DAA520 0%, #FFD700 100%);
+            padding: 2.5rem;
+            color: white;
+        }
+        
+        .header-section h1 {
+            font-size: 2.5rem;
+            font-weight: 700;
+            margin-bottom: 0.5rem;
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.2);
+        }
+        
+        .header-section .chinese-name {
+            font-size: 1.8rem;
+            margin-bottom: 1rem;
+            opacity: 0.95;
+        }
+        
+        .header-section .dynasty {
+            font-size: 1.1rem;
+            opacity: 0.9;
+        }
+        
+        .content-section {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 2rem;
+            padding: 2.5rem;
+        }
+        
+        .image-section {
+            position: sticky;
+            top: 2rem;
+            height: fit-content;
+        }
+        
+        .main-image {
+            width: 100%;
+            border-radius: 15px;
+            box-shadow: 0 5px 20px rgba(0,0,0,0.2);
+            background: linear-gradient(135deg, #f5f5f5 0%, #e0e0e0 100%);
+            min-height: 400px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 5rem;
+            color: #ccc;
+        }
+        
+        .main-image img {
+            width: 100%;
+            height: auto;
+            border-radius: 15px;
+        }
+        
+        .image-gallery {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 1rem;
+            margin-top: 1rem;
+        }
+        
+        .thumbnail {
+            width: 100%;
+            aspect-ratio: 1;
+            border-radius: 10px;
+            object-fit: cover;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            border: 3px solid transparent;
+            background: linear-gradient(135deg, #f5f5f5 0%, #e0e0e0 100%);
+        }
+        
+        .thumbnail:hover {
+            border-color: #DAA520;
+            transform: scale(1.05);
+        }
+        
+        .info-section h2 {
+            color: #DAA520;
+            font-size: 1.8rem;
+            font-weight: 700;
+            margin-bottom: 1.5rem;
+            border-bottom: 3px solid #DAA520;
+            padding-bottom: 0.5rem;
+        }
+        
+        .info-item {
+            margin-bottom: 1.5rem;
+        }
+        
+        .info-label {
+            font-weight: 700;
+            color: #333;
+            font-size: 1.1rem;
+            margin-bottom: 0.5rem;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+        
+        .info-label i {
+            color: #DAA520;
+            width: 24px;
+        }
+        
+        .info-value {
+            color: #555;
+            font-size: 1rem;
+            line-height: 1.8;
+            padding-left: 2rem;
+        }
+        
+        .specs-grid {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 1rem;
+            margin-top: 1rem;
+        }
+        
+        .spec-card {
+            background: linear-gradient(135deg, #f8f9fa 0%, #e9ecef 100%);
+            padding: 1rem;
+            border-radius: 10px;
+            border-left: 4px solid #DAA520;
+        }
+        
+        .spec-label {
+            font-size: 0.85rem;
+            color: #666;
+            font-weight: 600;
+            margin-bottom: 0.3rem;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+        
+        .spec-label i {
+            color: #DAA520;
+        }
+        
+        .spec-value {
+            font-size: 1.1rem;
+            color: #333;
+            font-weight: 700;
+        }
+        
+        .description-box {
+            background: linear-gradient(135deg, rgba(218, 165, 32, 0.1) 0%, rgba(255, 215, 0, 0.1) 100%);
+            padding: 1.5rem;
+            border-radius: 10px;
+            border-left: 4px solid #DAA520;
+            margin-top: 1.5rem;
+        }
+        
+        .description-box p {
+            margin: 0;
+            line-height: 1.8;
+            color: #555;
+        }
+        
+        .rarity-stars {
+            color: #FFD700;
+            font-size: 1.2rem;
+        }
+        
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+        
+        @media (max-width: 992px) {
+            .content-section {
+                grid-template-columns: 1fr;
+            }
+            
+            .image-section {
+                position: relative;
+                top: 0;
+            }
+            
+            .header-section h1 {
+                font-size: 2rem;
+            }
+            
+            .header-section .chinese-name {
+                font-size: 1.5rem;
+            }
+            
+            .specs-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <a href="nhaly.html" class="back-button">
+            <i class="fas fa-arrow-left"></i> Quay lại danh sách
+        </a>
+         <a href="../index.html" class="back-button" style="margin-left: 53rem;">
+            <i class="bi bi-arrow-left-circle"></i> Home
+        </a>
+        <div class="detail-container">
+            <div class="header-section">
+                <h1>Thiên Phù Nguyên Bảo</h1>
+                <div class="chinese-name">天符元寶</div>
+                <div class="dynasty"><i class="fas fa-landmark"></i> Tiền tệ Việt Nam</div>
+            </div>
+            
+            <div class="content-section">
+                <!-- Image Section -->
+                <div class="image-section">
+                    <div class="main-image">
+                        <img src="/image/thiên phù nguyên bảo/thienphunguyenbao.png" alt="Khai nguyên thông bảo" onerror="this.parentElement.innerHTML='<i class=\'fas fa-coins\'></i>'">
+                    </div>
+                    <div class="image-gallery">
+                        <img src="/image/currency/thuan-thien-nguyen-bao-2.jpg" alt="Mặt sau" class="thumbnail" onerror="this.style.display='none'" onclick="swapImage(this)">
+                        <img src="/image/currency/thuan-thien-nguyen-bao-3.jpg" alt="Chi tiết" class="thumbnail" onerror="this.style.display='none'" onclick="swapImage(this)">
+                        <img src="/image/currency/thuan-thien-nguyen-bao-4.jpg" alt="So sánh" class="thumbnail" onerror="this.style.display='none'" onclick="swapImage(this)">
+                    </div>
+                </div>
+                
+                <!-- Info Section -->
+                <div class="info-section">
+                    <h2><i class="fas fa-info-circle"></i> Thông tin chi tiết</h2>
+                    
+                    <div class="info-item">
+                        <div class="info-label">
+                            <i class="fas fa-calendar-alt"></i>
+                            Thời kỳ đúc
+                        </div>
+                        <div class="info-value">
+Thiên Phù Nguyên Bảo (天符元寶) được đúc dưới triều Lý Nhân Tông (1072–1127), trong niên hiệu Thiên Phù (1120–1127) – giai đoạn cuối cùng trong thời gian trị vì dài và hưng thịnh của vị vua này. Đây là thời kỳ cực thịnh của nhà Lý, đất nước Đại Việt ổn định, kinh tế nông nghiệp phát triển, văn hóa – giáo dục – tôn giáo (đặc biệt là Phật giáo) đạt đến đỉnh cao.
+<br><br>
+Việc đúc Thiên Phù Nguyên Bảo phản ánh sự hoàn thiện của hệ thống tiền tệ nhà Lý sau gần một thế kỷ phát triển. Triều đình chủ trương chuẩn hóa tiền lưu hành trên phạm vi toàn quốc, thay thế dần các loại tiền cũ, đồng thời khẳng định tính chính thống, độc lập và quyền phát hành tiền riêng của Đại Việt, sánh ngang với các triều đại Trung Hoa đương thời.
+<br><br>
+Trong bối cảnh quốc gia thịnh trị, việc đúc tiền không chỉ nhằm mục tiêu kinh tế mà còn có ý nghĩa biểu tượng chính trị và tôn giáo. Niên hiệu “Thiên Phù” thể hiện niềm tin của triều đình rằng vương quyền được trời che chở, quốc vận lâu dài, và xã hội được trời phú cho phúc lành. Các xưởng đúc lớn được đặt tại Thăng Long, cùng nhiều xưởng nhỏ ở Bắc Ninh, Ninh Bình, Thanh Hóa, nơi tập trung tài nguyên đồng và thợ thủ công lành nghề.                    </div>
+                    
+                    <div class="info-item">
+                        <div class="info-label">
+                            <i class="fas fa-ruler-combined"></i>
+                            Thông số kỹ thuật
+                        </div>
+                        <div class="info-value">
+Đồng tiền tròn, lỗ vuông, chất liệu đồng đỏ hoặc đồng pha thiếc, đôi khi pha kẽm để giảm chi phí.
+Đường kính trung bình 2,4 – 2,6 cm, trọng lượng khoảng 2,6 – 3,3 gram; khuôn đúc đều, gờ viền rõ, mặt tiền phẳng, chữ khắc sâu và sắc nét.
+Bề mặt đồng có màu nâu đỏ hoặc xanh xám, do quá trình oxy hóa lâu dài. Một số bản mỏng nhẹ hơn được cho là bản lưu hành tại địa phương hoặc trong các vùng phụ cận.                    </div>
+                    
+                    <div class="info-item">
+                        <div class="info-label">
+                            <i class="fas fa-language"></i>
+                            Chữ viết
+                        </div>
+                        <div class="info-value">
+Mặt trước khắc bốn chữ “天符元寶” (Thiên Phù Nguyên Bảo), đọc theo thứ tự trên – dưới – phải – trái.
+
+Thể chữ đa số dùng chân thư (khải thư), nét chữ cân đối, thanh thoát, thể hiện phong cách thư pháp điển hình thời Lý – giản dị nhưng trang nghiêm. Một số mẫu hiếm dùng lệ thư, nét dày và mềm hơn, thường thấy trong các bản đúc địa phương.
+
+Mặt sau phần lớn không có chữ, nhưng có một số đồng tiền mang dấu chấm nhỏ, ký hiệu hoặc vết khắc mờ, có thể là dấu của xưởng đúc hoặc thợ thủ công.                    </div>
+                    
+                    <div class="info-item">
+                        <div class="info-label">
+                            <i class="fas fa-lightbulb"></i>
+                            Ý nghĩa tên gọi
+                        </div>
+                        <div class="info-value">
+“Thiên Phù” (天符) mang nghĩa “điềm lành của trời”, “trời ban phúc” – biểu tượng cho thiên mệnh và sự phù trợ của trời đối với vương triều. Tên niên hiệu này thể hiện niềm tin rằng nhà Lý được trời phú cho vận nước thịnh trị, quốc thái dân an.
+“Nguyên Bảo” (元寶) nghĩa là “bảo vật căn bản”, “tiền báu chính thống”, dùng để chỉ tiền tệ chính thức lưu hành trong nước.                        </div>
+                    </div>
+                    
+                    <div class="description-box">
+                        <div class="info-label" style="padding-left: 0;">
+                            <i class="fas fa-book-open"></i>
+                            Mô tả và lịch sử
+                        </div>
+                        <p>
+Thiên Phù Nguyên Bảo là một trong những đồng tiền tiêu biểu và hoàn thiện nhất của thời Lý, phản ánh rõ nét trình độ kỹ thuật đúc và nghệ thuật thư pháp đạt đến mức cao. So với các tiền đúc trước đó như Càn Phù Nguyên Bảo hay Minh Đạo Thông Bảo, loại tiền này có hình thức tinh xảo, khuôn tròn đều, chữ rõ ràng và cân đối hơn nhiều, cho thấy sự trưởng thành vượt bậc của kỹ nghệ kim loại và sự ổn định hành chính của nhà nước phong kiến Đại Việt.
+<br><br>
+Đồng tiền này được phát hành rộng rãi, lưu hành trong cả hoạt động thuế khóa, cống nạp, chi tiêu triều đình, cũng như trong các giao dịch dân gian quy mô nhỏ – minh chứng cho sự phát triển kinh tế hàng hóa và thương mại nội địa thời Lý Nhân Tông. Dưới thời ông, các công trình lớn như Văn Miếu, chùa Một Cột, và hệ thống thủy lợi – giao thông được mở rộng, cho thấy nền tài chính triều đình mạnh mẽ và nhu cầu tiền tệ gia tăng.                        </p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
+    <script>
+        function swapImage(thumbnail) {
+            const mainImg = document.querySelector('.main-image img');
+            if (mainImg && thumbnail.src) {
+                const tempSrc = mainImg.src;
+                mainImg.src = thumbnail.src;
+                thumbnail.src = tempSrc;
+            }
+        }
+    </script>
+</body>
+</html>

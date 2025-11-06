@@ -1,0 +1,374 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Thiên cảm Thông Bảo - Chi tiết</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.1/font/bootstrap-icons.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        body {
+            background: url('/image/homebackground.jpg') no-repeat center center fixed;
+            background-size: cover;
+            min-height: 100vh;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            position: relative;
+            padding: 2rem 0;
+        }
+        
+        body::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.5);
+            z-index: 0;
+        }
+        
+        .container {
+            position: relative;
+            z-index: 1;
+            max-width: 1200px;
+        }
+        
+        .back-button {
+            background: white;
+            color: #DAA520;
+            border: none;
+            padding: 0.8rem 1.5rem;
+            border-radius: 10px;
+            font-weight: 600;
+            text-decoration: none;
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+            transition: all 0.3s ease;
+            margin-bottom: 2rem;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.2);
+        }
+        
+        .back-button:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 6px 20px rgba(0,0,0,0.3);
+            color: #DAA520;
+        }
+        
+        .detail-container {
+            background: white;
+            border-radius: 20px;
+            overflow: hidden;
+            box-shadow: 0 10px 40px rgba(0,0,0,0.3);
+            animation: fadeInUp 0.8s ease-out;
+        }
+        
+        .header-section {
+            background: linear-gradient(135deg, #DAA520 0%, #FFD700 100%);
+            padding: 2.5rem;
+            color: white;
+        }
+        
+        .header-section h1 {
+            font-size: 2.5rem;
+            font-weight: 700;
+            margin-bottom: 0.5rem;
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.2);
+        }
+        
+        .header-section .chinese-name {
+            font-size: 1.8rem;
+            margin-bottom: 1rem;
+            opacity: 0.95;
+        }
+        
+        .header-section .dynasty {
+            font-size: 1.1rem;
+            opacity: 0.9;
+        }
+        
+        .content-section {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 2rem;
+            padding: 2.5rem;
+        }
+        
+        .image-section {
+            position: sticky;
+            top: 2rem;
+            height: fit-content;
+        }
+        
+        .main-image {
+            width: 100%;
+            border-radius: 15px;
+            box-shadow: 0 5px 20px rgba(0,0,0,0.2);
+            background: linear-gradient(135deg, #f5f5f5 0%, #e0e0e0 100%);
+            min-height: 400px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 5rem;
+            color: #ccc;
+        }
+        
+        .main-image img {
+            width: 100%;
+            height: auto;
+            border-radius: 15px;
+        }
+        
+        .image-gallery {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 1rem;
+            margin-top: 1rem;
+        }
+        
+        .thumbnail {
+            width: 100%;
+            aspect-ratio: 1;
+            border-radius: 10px;
+            object-fit: cover;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            border: 3px solid transparent;
+            background: linear-gradient(135deg, #f5f5f5 0%, #e0e0e0 100%);
+        }
+        
+        .thumbnail:hover {
+            border-color: #DAA520;
+            transform: scale(1.05);
+        }
+        
+        .info-section h2 {
+            color: #DAA520;
+            font-size: 1.8rem;
+            font-weight: 700;
+            margin-bottom: 1.5rem;
+            border-bottom: 3px solid #DAA520;
+            padding-bottom: 0.5rem;
+        }
+        
+        .info-item {
+            margin-bottom: 1.5rem;
+        }
+        
+        .info-label {
+            font-weight: 700;
+            color: #333;
+            font-size: 1.1rem;
+            margin-bottom: 0.5rem;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+        
+        .info-label i {
+            color: #DAA520;
+            width: 24px;
+        }
+        
+        .info-value {
+            color: #555;
+            font-size: 1rem;
+            line-height: 1.8;
+            padding-left: 2rem;
+        }
+        
+        .specs-grid {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 1rem;
+            margin-top: 1rem;
+        }
+        
+        .spec-card {
+            background: linear-gradient(135deg, #f8f9fa 0%, #e9ecef 100%);
+            padding: 1rem;
+            border-radius: 10px;
+            border-left: 4px solid #DAA520;
+        }
+        
+        .spec-label {
+            font-size: 0.85rem;
+            color: #666;
+            font-weight: 600;
+            margin-bottom: 0.3rem;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+        
+        .spec-label i {
+            color: #DAA520;
+        }
+        
+        .spec-value {
+            font-size: 1.1rem;
+            color: #333;
+            font-weight: 700;
+        }
+        
+        .description-box {
+            background: linear-gradient(135deg, rgba(218, 165, 32, 0.1) 0%, rgba(255, 215, 0, 0.1) 100%);
+            padding: 1.5rem;
+            border-radius: 10px;
+            border-left: 4px solid #DAA520;
+            margin-top: 1.5rem;
+        }
+        
+        .description-box p {
+            margin: 0;
+            line-height: 1.8;
+            color: #555;
+        }
+        
+        .rarity-stars {
+            color: #FFD700;
+            font-size: 1.2rem;
+        }
+        
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+        
+        @media (max-width: 992px) {
+            .content-section {
+                grid-template-columns: 1fr;
+            }
+            
+            .image-section {
+                position: relative;
+                top: 0;
+            }
+            
+            .header-section h1 {
+                font-size: 2rem;
+            }
+            
+            .header-section .chinese-name {
+                font-size: 1.5rem;
+            }
+            
+            .specs-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <a href="nhaly.html" class="back-button">
+            <i class="fas fa-arrow-left"></i> Quay lại danh sách
+        </a>
+         <a href="../index.html" class="back-button" style="margin-left: 53rem;">
+            <i class="bi bi-arrow-left-circle"></i> Home
+        </a>
+        <div class="detail-container">
+            <div class="header-section">
+                <h1>Thiên Cảm Thông Bảo</h1>
+                <div class="chinese-name">天感通寶</div>
+                <div class="dynasty"><i class="fas fa-landmark"></i> Tiền tệ Việt Nam</div>
+            </div>
+            
+            <div class="content-section">
+                <!-- Image Section -->
+                <div class="image-section">
+                    <div class="main-image">
+                        <img src="/image/thiên cảm nguyên bảo/thiencamnguyenbao.jpg" alt="Khai nguyên thông bảo" onerror="this.parentElement.innerHTML='<i class=\'fas fa-coins\'></i>'">
+                    </div>
+                    <div class="image-gallery">
+                        <img src="/image/currency/thuan-thien-nguyen-bao-2.jpg" alt="Mặt sau" class="thumbnail" onerror="this.style.display='none'" onclick="swapImage(this)">
+                        <img src="/image/currency/thuan-thien-nguyen-bao-3.jpg" alt="Chi tiết" class="thumbnail" onerror="this.style.display='none'" onclick="swapImage(this)">
+                        <img src="/image/currency/thuan-thien-nguyen-bao-4.jpg" alt="So sánh" class="thumbnail" onerror="this.style.display='none'" onclick="swapImage(this)">
+                    </div>
+                </div>
+                
+                <!-- Info Section -->
+                <div class="info-section">
+                    <h2><i class="fas fa-info-circle"></i> Thông tin chi tiết</h2>
+                    
+                    <div class="info-item">
+                        <div class="info-label">
+                            <i class="fas fa-calendar-alt"></i>
+                            Thời kỳ đúc
+                        </div>
+                        <div class="info-value">
+Thiên Cảm Thông Bảo (天感通寶) được đúc dưới triều Lý Cao Tông (1175–1210), vào niên hiệu Thiên Cảm (1174–1175) – tức là giai đoạn cuối đời vua Lý Anh Tông và đầu thời Lý Cao Tông. Đây là một trong những đồng tiền chuyển tiếp giữa hai thời kỳ trị vì, đánh dấu bước ngoặt từ giai đoạn cực thịnh sang thời kỳ bắt đầu xuất hiện dấu hiệu suy yếu của triều Lý.
+<br><br>
+Thời điểm này, Lý Anh Tông lâm bệnh, thái tử Long Trát (sau là Lý Cao Tông) được lập làm hoàng thái tử, triều đình bước vào giai đoạn chuyển giao quyền lực. Dẫu vậy, nền chính trị vẫn ổn định, kinh tế Đại Việt tiếp tục phát triển và việc đúc Thiên Cảm Thông Bảo được xem là một nghi thức chính trị – biểu tượng cho thiên mệnh, cho sự cảm ứng giữa trời và người, đồng thời nhằm duy trì hệ thống tiền tệ thống nhất.
+<br><br>
+Việc đúc tiền Thiên Cảm Thông Bảo thể hiện nỗ lực của triều đình trong việc duy trì quyền phát hành tiền độc lập, khẳng định sự liên tục của quốc thống giữa hai triều vua. Các xưởng đúc chính đặt tại Thăng Long, cùng các xưởng phụ ở Thanh Hóa, Nghệ An, Bắc Ninh – những trung tâm hành chính và luyện kim lớn của Đại Việt thế kỷ XII.                    </div>
+                    
+                    <div class="info-item">
+                        <div class="info-label">
+                            <i class="fas fa-ruler-combined"></i>
+                            Thông số kỹ thuật
+                        </div>
+                        <div class="info-value">
+Đồng tiền tròn, lỗ vuông, đúc bằng đồng đỏ hoặc đồng pha thiếc, một số bản dùng đồng pha kẽm để tiết kiệm nguyên liệu.
+Đường kính trung bình 2,4 – 2,5 cm, trọng lượng khoảng 2,6 – 3,1 gram, khuôn tròn đều, gờ viền hơi cao, mặt tiền phẳng, chữ khắc sắc nét.                    </div>
+                    
+                    <div class="info-item">
+                        <div class="info-label">
+                            <i class="fas fa-language"></i>
+                            Chữ viết
+                        </div>
+                        <div class="info-value">
+Mặt trước khắc bốn chữ “天感通寶” (Thiên Cảm Thông Bảo), bố cục trên – dưới – phải – trái, theo đúng quy cách truyền thống của tiền tệ Đại Việt thời Lý.
+
+Thể chữ phần lớn dùng chân thư (khải thư), nét rõ, vuông vức, cứng cáp; thể hiện phong cách thư pháp điềm đạm, ngay ngắn của thời Lý trung hậu kỳ.
+
+Mặt sau đa phần không có chữ, một số bản hiếm có dấu chấm nhỏ hoặc vết khắc mờ, có thể là dấu hiệu của xưởng đúc hoặc ký hiệu kiểm định.                    </div>
+                    
+                    <div class="info-item">
+                        <div class="info-label">
+                            <i class="fas fa-lightbulb"></i>
+                            Ý nghĩa tên gọi
+                        </div>
+                        <div class="info-value">
+“Thiên Cảm” (天感) nghĩa là “trời cảm ứng” – biểu trưng cho niềm tin rằng vương triều được trời cảm hóa, ban phúc, ứng thuận với lòng người. Niên hiệu này được chọn nhằm cầu mong thiên hạ thái bình, quốc vận trường tồn, đặc biệt trong thời điểm chuyển giao giữa hai đời vua.
+“Thông Bảo” (通寶) có nghĩa là “tiền báu lưu hành thông suốt”, biểu tượng cho nền tài chính ổn định và quyền lực hợp pháp của triều đình.                        </div>
+                    </div>
+                    
+                    <div class="description-box">
+                        <div class="info-label" style="padding-left: 0;">
+                            <i class="fas fa-book-open"></i>
+                            Mô tả và lịch sử
+                        </div>
+                        <p>
+Thiên Cảm Thông Bảo là một trong những đồng tiền cuối cùng của thời Lý Anh Tông, đồng thời mở đầu triều đại của Lý Cao Tông, nên mang giá trị đặc biệt về lịch sử và biểu tượng. Mặc dù thời gian lưu hành ngắn (chỉ khoảng một năm), đồng tiền này vẫn thể hiện rõ đặc trưng nghệ thuật và kỹ thuật đúc tiền tinh tế của triều Lý, với khuôn đúc chuẩn, nét chữ uyển chuyển, cân đối.
+<br><br>
+Đồng tiền này được đúc trong bối cảnh triều đình đang duy trì nền hành chính ổn định, nhưng đã xuất hiện những dấu hiệu đầu tiên của sự suy yếu trong nội trị, như quan lại tham ô, dân nghèo cực khổ, khiến tiền tệ dần mất giá trong các thập kỷ sau. Tuy nhiên, Thiên Cảm Thông Bảo vẫn được xem là minh chứng cuối cùng cho sự hưng thịnh của nền tài chính thời Lý trung kỳ, trước khi triều đại bước vào giai đoạn khủng hoảng.      
+<br><br>
+hiên Cảm Thông Bảo không chỉ là vật chứng cho sự liên tục của quốc thống Đại Việt, mà còn là tấm gương phản chiếu của tư tưởng “thiên nhân hợp nhất” – niềm tin vào thiên mệnh và sự cảm ứng giữa trời và vua – vốn là nền tảng tinh thần của triều đại nhà Lý. Đồng tiền này, tuy tồn tại ngắn ngủi, nhưng là cột mốc chuyển giao quan trọng, đánh dấu sự kết thúc thời kỳ cực thịnh và mở đầu cho giai đoạn biến động của triều Lý.
+</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
+    <script>
+        function swapImage(thumbnail) {
+            const mainImg = document.querySelector('.main-image img');
+            if (mainImg && thumbnail.src) {
+                const tempSrc = mainImg.src;
+                mainImg.src = thumbnail.src;
+                thumbnail.src = tempSrc;
+            }
+        }
+    </script>
+</body>
+</html>
