@@ -1,0 +1,441 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Tiền Giấy Việt Nam</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.1/font/bootstrap-icons.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" />
+    <style>
+        body {
+            background: url('/image/homebackground.jpg') no-repeat center center fixed;
+            background-size: cover;
+            min-height: 100vh;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            position: relative;
+            padding: 2rem 0;
+        }
+        
+        body::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.5);
+            z-index: 0;
+        }
+        
+        .container {
+            position: relative;
+            z-index: 1;
+            max-width: 1200px;
+        }
+        
+        .back-button {
+            background: white;
+            color: #DAA520;
+            border: none;
+            padding: 0.8rem 1.5rem;
+            border-radius: 10px;
+            font-weight: 600;
+            text-decoration: none;
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+            transition: all 0.3s ease;
+            margin-bottom: 2rem;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.2);
+        }
+        
+        .back-button:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 6px 20px rgba(0,0,0,0.3);
+            color: #DAA520;
+        }
+        
+        .header-section {
+            background: linear-gradient(135deg, #DAA520 0%, #FFD700 100%);
+            border-radius: 20px;
+            padding: 2.5rem;
+            margin-bottom: 2rem;
+            box-shadow: 0 10px 40px rgba(0,0,0,0.3);
+            animation: fadeInDown 0.8s ease-out;
+            text-align: center;
+        }
+        
+        .header-section h1 {
+            color: #fff;
+            font-size: 2.5rem;
+            font-weight: 700;
+            margin-bottom: 0.5rem;
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.3);
+        }
+        
+        .header-section .subtitle {
+            color: rgba(255,255,255,0.95);
+            font-size: 1.2rem;
+            font-weight: 600;
+            margin: 0;
+        }
+        
+        .content-section {
+            background: white;
+            border-radius: 15px;
+            padding: 2.5rem;
+            margin-bottom: 2rem;
+            box-shadow: 0 5px 20px rgba(0,0,0,0.2);
+            animation: fadeInUp 0.8s ease-out;
+        }
+        
+        .section-title {
+            color: #DAA520;
+            font-size: 1.8rem;
+            font-weight: 700;
+            margin-bottom: 1.5rem;
+            padding-bottom: 0.8rem;
+            border-bottom: 3px solid #FFD700;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+        
+        .section-text {
+            color: #333;
+            font-size: 1.05rem;
+            line-height: 1.8;
+            text-align: justify;
+            margin-bottom: 1.5rem;
+        }
+        
+        .currency-image-main {
+            width: 100%;
+            max-width: 900px;
+            margin: 2rem auto;
+            display: block;
+            border-radius: 15px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.3);
+            transition: transform 0.3s ease;
+            border: 4px solid #FFD700;
+        }
+        
+        .currency-image-main:hover {
+            transform: scale(1.02);
+        }
+        
+        .timeline {
+            position: relative;
+            padding: 2rem 0;
+        }
+        
+        .timeline-item {
+            background: linear-gradient(135deg, #FFF9E6 0%, #FFFAF0 100%);
+            border-left: 5px solid #DAA520;
+            border-radius: 10px;
+            padding: 2rem;
+            margin-bottom: 2rem;
+            box-shadow: 0 3px 10px rgba(218, 165, 32, 0.2);
+            transition: all 0.3s ease;
+        }
+        
+        .timeline-item:hover {
+            transform: translateX(5px);
+            box-shadow: 0 5px 15px rgba(218, 165, 32, 0.3);
+        }
+        
+        .timeline-item h3 {
+            color: #DAA520;
+            font-size: 1.4rem;
+            font-weight: 700;
+            margin-bottom: 1rem;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+        
+        .timeline-item .year {
+            display: inline-block;
+            background: #DAA520;
+            color: white;
+            padding: 0.3rem 0.8rem;
+            border-radius: 20px;
+            font-size: 0.9rem;
+            font-weight: 600;
+            margin-bottom: 0.5rem;
+        }
+        
+        .timeline-item p {
+            color: #444;
+            line-height: 1.7;
+            margin-bottom: 0.8rem;
+        }
+        
+        .highlight-box {
+            background: linear-gradient(135deg, #FFF9E6 0%, #FFFAF0 100%);
+            border-left: 5px solid #DAA520;
+            border-radius: 10px;
+            padding: 2rem;
+            margin: 2rem 0;
+            box-shadow: 0 3px 10px rgba(218, 165, 32, 0.2);
+        }
+        
+        .highlight-box h3 {
+            color: #DAA520;
+            font-size: 1.4rem;
+            font-weight: 700;
+            margin-bottom: 1.5rem;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+        
+        .highlight-box ul {
+            list-style: none;
+            padding-left: 0;
+        }
+        
+        .highlight-box li {
+            padding: 0.8rem 0;
+            padding-left: 2rem;
+            position: relative;
+            color: #444;
+            font-size: 1.05rem;
+            line-height: 1.6;
+        }
+        
+        .highlight-box li:before {
+            content: "✦";
+            position: absolute;
+            left: 0;
+            color: #DAA520;
+            font-weight: bold;
+            font-size: 1.2rem;
+        }
+        
+        .info-card {
+            background: linear-gradient(135deg, #DAA520 0%, #FFD700 100%);
+            color: white;
+            padding: 2rem;
+            border-radius: 15px;
+            text-align: center;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.2);
+            margin-bottom: 2rem;
+        }
+        
+        .info-card .icon {
+            font-size: 3rem;
+            margin-bottom: 1rem;
+        }
+        
+        .info-card h3 {
+            font-size: 1.5rem;
+            font-weight: 700;
+            margin-bottom: 1rem;
+        }
+        
+        .info-card p {
+            font-size: 1.05rem;
+            opacity: 0.95;
+            margin: 0;
+        }
+        
+        .footer-section {
+            background: rgba(255, 255, 255, 0.95);
+            border-radius: 15px;
+            padding: 1.5rem;
+            text-align: center;
+            box-shadow: 0 5px 20px rgba(0,0,0,0.2);
+            color: #666;
+            font-size: 0.95rem;
+        }
+        
+        @keyframes fadeInDown {
+            from {
+                opacity: 0;
+                transform: translateY(-30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+        
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+        
+        @media (max-width: 768px) {
+            .header-section h1 {
+                font-size: 1.8rem;
+            }
+            
+            .content-section {
+                padding: 1.5rem;
+            }
+            
+            .section-title {
+                font-size: 1.4rem;
+            }
+            
+            .section-text {
+                font-size: 1rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <a href="javascript:history.back()" class="back-button">
+            <i class="bi bi-arrow-left-circle"></i> Quay lại
+        </a>
+        
+        <div class="header-section">
+            <h1><i class="fa-solid fa-money-bill"></i> Tiền Giấy Việt Nam</h1>
+            <p class="subtitle">Hành trình lịch sử tiền tệ qua các thời kỳ</p>
+        </div>
+        
+        <div class="content-section">
+            <h2 class="section-title">
+                <i class="fa-solid fa-book-open"></i>
+                Lịch Sử Ra Đời
+            </h2>
+            <p class="section-text">
+                Tiền Việt Nam được phát hành lần đầu vào giữa thế kỷ 10, thời kỳ nhà nước Đại Cồ Việt dưới sự trị vì của Đinh Tiên Hoàng. Thời phong kiến, gần như mỗi đời vua lại cho phát hành loại tiền mới. Nhiều khi, mỗi lần thay đổi niên hiệu, vua lại cho phát hành loại tiền mới.
+            </p>
+            <p class="section-text">
+                Suốt một thời gian dài, tiền kim loại là thứ tiền duy nhất và mô phỏng theo tiền kim loại của các triều đình Trung Quốc. Tiền giấy xuất hiện ở Việt Nam khá sớm so với thế giới, vào năm 1396.
+            </p>
+        </div>
+        
+        <div class="content-section">
+            <img src="https://thegioitien.vn/wp-content/uploads/%C4%91%C4%83ng-web.jpg" alt="Tiền giấy Việt Nam" class="currency-image-main">
+        </div>
+        
+        <div class="content-section">
+            <h2 class="section-title">
+                <i class="fa-solid fa-timeline"></i>
+                Các Giai Đoạn Lịch Sử
+            </h2>
+            
+            <div class="timeline">
+                <div class="timeline-item">
+                    <span class="year">1396</span>
+                    <h3><i class="fa-solid fa-scroll"></i> Tiền Giấy Thông Bảo Hội Sao</h3>
+                    <p>
+                        Năm 1396, 4 năm trước khi nhà Hồ thay thế nhà Trần làm vua Việt Nam, tiền giấy mang tên Thông Bảo hội sao được phát hành. Lúc đó đang là niên hiệu Quang Thái của vua Trần Thuận Tông, nhưng việc ban bố các chủ trương chính sách quan trọng của đất nước lại do Hồ Quý Ly nắm.
+                    </p>
+                    <p>
+                        Thể thức tiền giấy: Giấy 10 đồng vẽ rong; 30 đồng vẽ sóng; 1 tiền vẽ mây; 2 tiền vẽ rùa; 3 tiền vẽ lân; 5 tiền vẽ phượng; 1 quan vẽ rồng. Ai làm giả phải tội chết, tịch thu điền sản vào nhà nước.
+                    </p>
+                </div>
+                
+                <div class="timeline-item">
+                    <span class="year">1885 - 1954</span>
+                    <h3><i class="fa-solid fa-landmark"></i> Giấy Bạc Đông Dương</h3>
+                    <p>
+                        Tờ tiền giấy đầu tiên được lưu thông ở Việt Nam trong thời Pháp thuộc là đồng Đông Dương mệnh giá 100 đồng bạc, được người Pháp phát hành và lưu thông trong thời gian từ năm 1885 đến năm 1954. Trên đó có in hình 3 thiếu nữ với trang phục truyền thống của Lào, Campuchia và Việt Nam.
+                    </p>
+                    <p>
+                        Tiền này được lưu hành chung ở 3 nước Việt Nam - Lào – Campuchia, đánh dấu giai đoạn quan trọng trong lịch sử tiền tệ Đông Nam Á.
+                    </p>
+                </div>
+                
+                <div class="timeline-item">
+                    <span class="year">1946</span>
+                    <h3><i class="fa-solid fa-flag"></i> Giấy Bạc Tài Chính - Tiền Cụ Hồ</h3>
+                    <p>
+                        Ngày 31/01/1946, Chủ tịch Hồ Chí Minh ký Sắc lệnh số 18B/SL cho phép phát hành "đồng bạc Giấy Việt Nam" hay còn được gọi là "Giấy bạc Tài chính Việt Nam" đầu tiên ở miền Nam Trung Bộ (từ vĩ tuyến 16 trở vào).
+                    </p>
+                    <p>
+                        Trên mỗi tờ tiền đều in chữ "Việt Nam Dân Chủ Cộng Hòa" bằng chữ quốc ngữ, chữ Hán và hình Chủ tịch Hồ Chí Minh; mặt sau của tờ tiền thường in các hình ảnh về giai cấp Nông - Công - Binh; các con số ghi mệnh giá đều được viết theo số Ả-Rập hoặc bằng chữ Hán, Lào, Campuchia.
+                    </p>
+                </div>
+                
+                <div class="timeline-item">
+                    <span class="year">1951</span>
+                    <h3><i class="fa-solid fa-building-columns"></i> Tiền Ngân Hàng Quốc Gia</h3>
+                    <p>
+                        Ngày 5 tháng 6 năm 1951, Hồ Chí Minh ký nghị định thành lập Ngân hàng Quốc gia Việt Nam và phát hành giấy bạc ngân hàng. Giấy bạc ngân hàng đổi lấy giấy bạc tài chính theo tỷ lệ 1 đồng ngân hàng đổi 10 đồng tài chính.
+                    </p>
+                    <p>
+                        Giấy bạc ngân hàng có các loại mệnh giá: 1 đồng, 10 đồng, 20 đồng, 50 đồng, 100 đồng, 200 đồng, 500 đồng, 1.000 đồng và 5.000 đồng. Một mặt in chữ "Việt Nam Dân chủ Cộng hòa" (chữ Hán và chữ quốc ngữ) và hình Hồ Chí Minh; một mặt in hình công - nông - binh, hình bộ đội ở chiến trường.
+                    </p>
+                </div>
+                
+                <div class="timeline-item">
+                    <span class="year">1990 - Hiện tại</span>
+                    <h3><i class="fa-solid fa-money-bill-trend-up"></i> Tiền Giấy Cotton và Polymer</h3>
+                    <p>
+                        Trước thời kỳ Việt Nam sử dụng tiền polymer là các tờ tiền giấy cotton có mệnh giá 10.000 và 20.000 được in năm 1990, tờ 50.000 được phát hành từ 15/10/1994 còn tờ 100.000 từ ngày 01/9/2000.
+                    </p>
+                    <p>
+                        Tiền polymer tại Việt Nam được Ngân hàng Nhà nước Việt Nam phát hành năm 2003, có giá trị lưu hành song song với các đồng tiền cũ, với mục tiêu đáp ứng nhu cầu lưu thông tiền tệ về cơ cấu mệnh giá (thêm loại tiền có mệnh giá lớn), chủng loại.
+                    </p>
+                </div>
+            </div>
+        </div>
+        
+        <div class="content-section">
+            <h2 class="section-title">
+                <i class="fa-solid fa-coins"></i>
+                Đặc Điểm Tiền Giấy Hiện Nại
+            </h2>
+            
+            <div class="highlight-box">
+                <h3><i class="fa-solid fa-check-circle"></i> Mệnh giá đang lưu hành:</h3>
+                <ul>
+                    <li>Tiền giấy: 100₫, 200₫, 500₫, 1.000₫, 2.000₫, 5.000₫</li>
+                    <li>Tiền polymer: 10.000₫, 20.000₫, 50.000₫, 100.000₫, 200.000₫, 500.000₫</li>
+                    <li>Đơn vị tiền tệ: 1 Đồng = 10 hào = 100 xu (hào và xu không còn được lưu hành)</li>
+                    <li>Ký hiệu quốc gia: "đ" | Ký hiệu quốc tế: "VND"</li>
+                </ul>
+            </div>
+            
+            <div class="row mt-4">
+                <div class="col-md-6 mb-3">
+                    <div class="info-card">
+                        <div class="icon"><i class="fa-solid fa-shield-halved"></i></div>
+                        <h3>Phương Tiện Thanh Toán</h3>
+                        <p>Đồng Việt Nam là phương tiện thanh toán pháp quy duy nhất tại Việt Nam</p>
+                    </div>
+                </div>
+                <div class="col-md-6 mb-3">
+                    <div class="info-card">
+                        <div class="icon"><i class="fa-solid fa-chart-line"></i></div>
+                        <h3>Thước Đo Giá Cả</h3>
+                        <p>Được sử dụng để đo lường giá trị của hàng hóa và dịch vụ trên thị trường</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+        <div class="content-section">
+            <h2 class="section-title">
+                <i class="fa-solid fa-lightbulb"></i>
+                Ý Nghĩa và Giá Trị
+            </h2>
+            <p class="section-text">
+                Lịch sử tiền giấy Việt Nam trải dài qua nhiều thời kỳ, gắn liền với những biến động chính trị, kinh tế, xã hội của đất nước. Từ những tờ tiền đầu tiên thời nhà Hồ cho đến tiền polymer hiện đại, mỗi giai đoạn đều mang dấu ấn riêng, phản ánh sự phát triển và khẳng định chủ quyền của dân tộc.
+            </p>
+            <p class="section-text">
+                Các loại tiền giấy Việt Nam không chỉ thể hiện sự phát triển kinh tế mà còn phản ánh lịch sử và văn hóa độc đáo của đất nước. Sự tiến bộ trong công nghệ sản xuất tiền giấy từ cotton đến polymer hiện nay giúp tạo ra tiền có tính chống giả cao và bảo vệ tốt giá trị của nó.
+            </p>
+        </div>
+        
+        <div class="footer-section">
+            <p><i class="fa-solid fa-landmark"></i> © 2025 - Tiền Giấy Việt Nam | Dấu ấn lịch sử qua các thời kỳ</p>
+        </div>
+    </div>
+    
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
+</body>
+</html>

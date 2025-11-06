@@ -1,0 +1,359 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Tiền Polymer Việt Nam</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.1/font/bootstrap-icons.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" />
+    <style>
+        body {
+            background: url('/image/homebackground.jpg') no-repeat center center fixed;
+            background-size: cover;
+            min-height: 100vh;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            position: relative;
+            padding: 2rem 0;
+        }
+        
+        body::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.5);
+            z-index: 0;
+        }
+        
+        .container {
+            position: relative;
+            z-index: 1;
+            max-width: 1200px;
+        }
+        
+        .back-button {
+            background: white;
+            color: #DAA520;
+            border: none;
+            padding: 0.8rem 1.5rem;
+            border-radius: 10px;
+            font-weight: 600;
+            text-decoration: none;
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+            transition: all 0.3s ease;
+            margin-bottom: 2rem;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.2);
+        }
+        
+        .back-button:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 6px 20px rgba(0,0,0,0.3);
+            color: #DAA520;
+        }
+        
+        .header-section {
+            background: linear-gradient(135deg, #DAA520 0%, #FFD700 100%);
+            border-radius: 20px;
+            padding: 2.5rem;
+            margin-bottom: 2rem;
+            box-shadow: 0 10px 40px rgba(0,0,0,0.3);
+            animation: fadeInDown 0.8s ease-out;
+            text-align: center;
+        }
+        
+        .header-section h1 {
+            color: #fff;
+            font-size: 2.5rem;
+            font-weight: 700;
+            margin-bottom: 0.5rem;
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.3);
+        }
+        
+        .header-section .subtitle {
+            color: rgba(255,255,255,0.95);
+            font-size: 1.2rem;
+            font-weight: 600;
+            margin: 0;
+        }
+        
+        .content-section {
+            background: white;
+            border-radius: 15px;
+            padding: 2.5rem;
+            margin-bottom: 2rem;
+            box-shadow: 0 5px 20px rgba(0,0,0,0.2);
+            animation: fadeInUp 0.8s ease-out;
+        }
+        
+        .section-title {
+            color: #DAA520;
+            font-size: 1.8rem;
+            font-weight: 700;
+            margin-bottom: 1.5rem;
+            padding-bottom: 0.8rem;
+            border-bottom: 3px solid #FFD700;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+        
+        .section-text {
+            color: #333;
+            font-size: 1.05rem;
+            line-height: 1.8;
+            text-align: justify;
+            margin-bottom: 1.5rem;
+        }
+        
+        .currency-image-main {
+            width: 100%;
+            max-width: 900px;
+            margin: 2rem auto;
+            display: block;
+            border-radius: 15px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.3);
+            transition: transform 0.3s ease;
+            border: 4px solid #FFD700;
+        }
+        
+        .currency-image-main:hover {
+            transform: scale(1.02);
+        }
+        
+        .highlight-box {
+            background: linear-gradient(135deg, #FFF9E6 0%, #FFFAF0 100%);
+            border-left: 5px solid #DAA520;
+            border-radius: 10px;
+            padding: 2rem;
+            margin: 2rem 0;
+            box-shadow: 0 3px 10px rgba(218, 165, 32, 0.2);
+        }
+        
+        .highlight-box h3 {
+            color: #DAA520;
+            font-size: 1.4rem;
+            font-weight: 700;
+            margin-bottom: 1.5rem;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+        
+        .highlight-box ul {
+            list-style: none;
+            padding-left: 0;
+        }
+        
+        .highlight-box li {
+            padding: 0.8rem 0;
+            padding-left: 2rem;
+            position: relative;
+            color: #444;
+            font-size: 1.05rem;
+            line-height: 1.6;
+        }
+        
+        .highlight-box li:before {
+            content: "✦";
+            position: absolute;
+            left: 0;
+            color: #DAA520;
+            font-weight: bold;
+            font-size: 1.2rem;
+        }
+        
+        .stats-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+            gap: 1.5rem;
+            margin: 2rem 0;
+        }
+        
+        .stat-card {
+            background: linear-gradient(135deg, #DAA520 0%, #FFD700 100%);
+            color: white;
+            padding: 2rem;
+            border-radius: 15px;
+            text-align: center;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.2);
+            transition: all 0.3s ease;
+        }
+        
+        .stat-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 25px rgba(0,0,0,0.3);
+        }
+        
+        .stat-card .stat-icon {
+            font-size: 2.5rem;
+            margin-bottom: 0.5rem;
+        }
+        
+        .stat-card .stat-title {
+            font-size: 1rem;
+            font-weight: 600;
+            margin-bottom: 0.5rem;
+            opacity: 0.95;
+        }
+        
+        .stat-card .stat-desc {
+            font-size: 0.9rem;
+            opacity: 0.9;
+        }
+        
+        .footer-section {
+            background: rgba(255, 255, 255, 0.95);
+            border-radius: 15px;
+            padding: 1.5rem;
+            text-align: center;
+            box-shadow: 0 5px 20px rgba(0,0,0,0.2);
+            color: #666;
+            font-size: 0.95rem;
+        }
+        
+        @keyframes fadeInDown {
+            from {
+                opacity: 0;
+                transform: translateY(-30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+        
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+        
+        @media (max-width: 768px) {
+            .header-section h1 {
+                font-size: 1.8rem;
+            }
+            
+            .content-section {
+                padding: 1.5rem;
+            }
+            
+            .section-title {
+                font-size: 1.4rem;
+            }
+            
+            .section-text {
+                font-size: 1rem;
+            }
+            
+            .stats-grid {
+                grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+                gap: 1rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <a href="javascript:history.back()" class="back-button">
+            <i class="bi bi-arrow-left-circle"></i> Quay lại
+        </a>
+        
+        <div class="header-section">
+            <h1><i class="fa-solid fa-money-bill-wave"></i> Đồng Tiền Polymer Việt Nam</h1>
+            <p class="subtitle">Biểu tượng của chủ quyền và phát triển trong thời kỳ đổi mới</p>
+        </div>
+        
+        <div class="content-section">
+            <h2 class="section-title">
+                <i class="fa-solid fa-clock-rotate-left"></i>
+                Thời Kỳ Đổi Mới
+            </h2>
+            <p class="section-text">
+                Nhờ đổi mới, kinh tế tăng trưởng mạnh, đời sống cải thiện, cơ cấu kinh tế chuyển dịch theo hướng công nghiệp hóa – hiện đại hóa. Về chính trị, giữ vững ổn định, đổi mới trong quản lý nhà nước, mở rộng quan hệ đối ngoại đa phương hóa, trở thành thành viên tích cực trong khu vực và thế giới.
+            </p>
+        </div>
+        
+        <div class="content-section">
+            <img src="https://i.ebayimg.com/images/g/5hcAAeSwT41pBPgp/s-l1600.webp" alt="Tiền Polymer Việt Nam" class="currency-image-main">
+        </div>
+        
+        <div class="content-section">
+            <h2 class="section-title">
+                <i class="fa-solid fa-file-lines"></i>
+                Ý Nghĩa Các Dòng Chữ Trên Tiền VND
+            </h2>
+            <p class="section-text">
+                Đồng tiền Việt Nam hiện nay có các dòng chữ mang ý nghĩa khẳng định chủ quyền quốc gia và giá trị pháp lý của tiền tệ. Trên mỗi tờ tiền đều in quốc hiệu "Cộng hòa Xã hội Chủ nghĩa Việt Nam" cùng tiêu ngữ "Độc lập – Tự do – Hạnh phúc", thể hiện bản chất và mục tiêu của Nhà nước.
+            </p>
+            
+            <div class="highlight-box">
+                <h3><i class="fa-solid fa-list-check"></i> Các yếu tố quan trọng trên tiền VND:</h3>
+                <ul>
+                    <li><strong>Quốc hiệu:</strong> "Cộng hòa Xã hội Chủ nghĩa Việt Nam" - khẳng định chủ quyền quốc gia</li>
+                    <li><strong>Tiêu ngữ:</strong> "Độc lập – Tự do – Hạnh phúc" - thể hiện bản chất và mục tiêu của Nhà nước</li>
+                    <li><strong>Tên cơ quan:</strong> "Ngân hàng Nhà nước Việt Nam" - xác nhận cơ quan duy nhất có quyền phát hành tiền</li>
+                    <li><strong>Mệnh giá:</strong> Được ghi bằng số và chữ cùng từ "Đồng" – đơn vị tiền tệ chính thức của Việt Nam</li>
+                    <li><strong>Chữ ký và dấu:</strong> Của Thống đốc Ngân hàng Nhà nước, tăng tính pháp lý và niềm tin của người dân đối với đồng tiền</li>
+                    <li><strong>Hệ thống mã seri:</strong> Giúp nhận diện và quản lý, hỗ trợ chống làm giả</li>
+                    <li><strong>Hình ảnh di sản:</strong> Kèm tên các di tích, thắng cảnh, di sản văn hóa ở mặt sau mang ý nghĩa tôn vinh lịch sử, văn hóa và thành tựu của đất nước</li>
+                </ul>
+            </div>
+        </div>
+        
+        <div class="content-section">
+            <h2 class="section-title">
+                <i class="fa-solid fa-chart-line"></i>
+                Thành Tựu Thời Kỳ Đổi Mới
+            </h2>
+            <div class="stats-grid">
+                <div class="stat-card">
+                    <div class="stat-icon">📈</div>
+                    <div class="stat-title">Kinh Tế</div>
+                    <div class="stat-desc">Tăng trưởng mạnh mẽ</div>
+                </div>
+                <div class="stat-card">
+                    <div class="stat-icon">🏠</div>
+                    <div class="stat-title">Đời Sống</div>
+                    <div class="stat-desc">Cải thiện rõ rệt</div>
+                </div>
+                <div class="stat-card">
+                    <div class="stat-icon">🌏</div>
+                    <div class="stat-title">Hội Nhập</div>
+                    <div class="stat-desc">Đa phương hóa</div>
+                </div>
+                <div class="stat-card">
+                    <div class="stat-icon">🏭</div>
+                    <div class="stat-title">Công Nghiệp Hóa</div>
+                    <div class="stat-desc">Hiện đại hóa</div>
+                </div>
+            </div>
+        </div>
+        
+        <div class="content-section">
+            <h2 class="section-title">
+                <i class="fa-solid fa-star"></i>
+                Giá Trị và Ý Nghĩa
+            </h2>
+            <p class="section-text">
+                Toàn bộ các yếu tố chữ viết trên tiền VND hiện nay thể hiện rõ ràng chủ quyền, uy tín quốc gia và tinh thần xây dựng – phát triển trong thời kỳ hội nhập. Đồng tiền không chỉ là phương tiện thanh toán mà còn là biểu tượng của sự phát triển, tự hào dân tộc và là minh chứng cho những thành tựu to lớn mà đất nước đã đạt được trong công cuộc đổi mới.
+            </p>
+        </div>
+        
+        <div class="footer-section">
+            <p><i class="fa-solid fa-flag"></i> © 2025 - Đồng Tiền Việt Nam | Biểu tượng của chủ quyền và phát triển</p>
+        </div>
+    </div>
+    
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
+</body>
+</html>
