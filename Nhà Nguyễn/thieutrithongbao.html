@@ -1,0 +1,364 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Khai Nguyên Thông Bảo - Chi tiết</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.1/font/bootstrap-icons.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        body {
+            background: url('/image/homebackground.jpg') no-repeat center center fixed;
+            background-size: cover;
+            min-height: 100vh;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            position: relative;
+            padding: 2rem 0;
+        }
+        
+        body::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.5);
+            z-index: 0;
+        }
+        
+        .container {
+            position: relative;
+            z-index: 1;
+            max-width: 1200px;
+        }
+        
+        .back-button {
+            background: white;
+            color: #DAA520;
+            border: none;
+            padding: 0.8rem 1.5rem;
+            border-radius: 10px;
+            font-weight: 600;
+            text-decoration: none;
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+            transition: all 0.3s ease;
+            margin-bottom: 2rem;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.2);
+        }
+        
+        .back-button:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 6px 20px rgba(0,0,0,0.3);
+            color: #DAA520;
+        }
+        
+        .detail-container {
+            background: white;
+            border-radius: 20px;
+            overflow: hidden;
+            box-shadow: 0 10px 40px rgba(0,0,0,0.3);
+            animation: fadeInUp 0.8s ease-out;
+        }
+        
+        .header-section {
+            background: linear-gradient(135deg, #DAA520 0%, #FFD700 100%);
+            padding: 2.5rem;
+            color: white;
+        }
+        
+        .header-section h1 {
+            font-size: 2.5rem;
+            font-weight: 700;
+            margin-bottom: 0.5rem;
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.2);
+        }
+        
+        .header-section .chinese-name {
+            font-size: 1.8rem;
+            margin-bottom: 1rem;
+            opacity: 0.95;
+        }
+        
+        .header-section .dynasty {
+            font-size: 1.1rem;
+            opacity: 0.9;
+        }
+        
+        .content-section {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 2rem;
+            padding: 2.5rem;
+        }
+        
+        .image-section {
+            position: sticky;
+            top: 2rem;
+            height: fit-content;
+        }
+        
+        .main-image {
+            width: 100%;
+            border-radius: 15px;
+            box-shadow: 0 5px 20px rgba(0,0,0,0.2);
+            background: linear-gradient(135deg, #f5f5f5 0%, #e0e0e0 100%);
+            min-height: 400px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 5rem;
+            color: #ccc;
+        }
+        
+        .main-image img {
+            width: 100%;
+            height: auto;
+            border-radius: 15px;
+        }
+        
+        .image-gallery {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 1rem;
+            margin-top: 1rem;
+        }
+        
+        .thumbnail {
+            width: 100%;
+            aspect-ratio: 1;
+            border-radius: 10px;
+            object-fit: cover;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            border: 3px solid transparent;
+            background: linear-gradient(135deg, #f5f5f5 0%, #e0e0e0 100%);
+        }
+        
+        .thumbnail:hover {
+            border-color: #DAA520;
+            transform: scale(1.05);
+        }
+        
+        .info-section h2 {
+            color: #DAA520;
+            font-size: 1.8rem;
+            font-weight: 700;
+            margin-bottom: 1.5rem;
+            border-bottom: 3px solid #DAA520;
+            padding-bottom: 0.5rem;
+        }
+        
+        .info-item {
+            margin-bottom: 1.5rem;
+        }
+        
+        .info-label {
+            font-weight: 700;
+            color: #333;
+            font-size: 1.1rem;
+            margin-bottom: 0.5rem;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+        
+        .info-label i {
+            color: #DAA520;
+            width: 24px;
+        }
+        
+        .info-value {
+            color: #555;
+            font-size: 1rem;
+            line-height: 1.8;
+            padding-left: 2rem;
+        }
+        
+        .specs-grid {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 1rem;
+            margin-top: 1rem;
+        }
+        
+        .spec-card {
+            background: linear-gradient(135deg, #f8f9fa 0%, #e9ecef 100%);
+            padding: 1rem;
+            border-radius: 10px;
+            border-left: 4px solid #DAA520;
+        }
+        
+        .spec-label {
+            font-size: 0.85rem;
+            color: #666;
+            font-weight: 600;
+            margin-bottom: 0.3rem;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+        
+        .spec-label i {
+            color: #DAA520;
+        }
+        
+        .spec-value {
+            font-size: 1.1rem;
+            color: #333;
+            font-weight: 700;
+        }
+        
+        .description-box {
+            background: linear-gradient(135deg, rgba(218, 165, 32, 0.1) 0%, rgba(255, 215, 0, 0.1) 100%);
+            padding: 1.5rem;
+            border-radius: 10px;
+            border-left: 4px solid #DAA520;
+            margin-top: 1.5rem;
+        }
+        
+        .description-box p {
+            margin: 0;
+            line-height: 1.8;
+            color: #555;
+        }
+        
+        .rarity-stars {
+            color: #FFD700;
+            font-size: 1.2rem;
+        }
+        
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+        
+        @media (max-width: 992px) {
+            .content-section {
+                grid-template-columns: 1fr;
+            }
+            
+            .image-section {
+                position: relative;
+                top: 0;
+            }
+            
+            .header-section h1 {
+                font-size: 2rem;
+            }
+            
+            .header-section .chinese-name {
+                font-size: 1.5rem;
+            }
+            
+            .specs-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <a href="nhanguyen.html" class="back-button">
+            <i class="fas fa-arrow-left"></i> Quay lại danh sách
+        </a>
+         <a href="../index.html" class="back-button" style="margin-left: 53rem;">
+            <i class="bi bi-arrow-left-circle"></i> Home
+        </a>
+        <div class="detail-container">
+            <div class="header-section">
+                <h1>Thiệu Trị Thông Bảo</h1>
+                <div class="chinese-name">紹治通寶</div>
+                <div class="dynasty"><i class="fas fa-landmark"></i> Tiền tệ Việt Nam</div>
+            </div>
+            
+            <div class="content-section">
+                <!-- Image Section -->
+                <div class="image-section">
+                    <div class="main-image">
+                        <img src="../image/thiệu trị thông bảo/thieutrithongbao.jpg" alt="Khai nguyên thông bảo" onerror="this.parentElement.innerHTML='<i class=\'fas fa-coins\'></i>'">
+                    </div>
+                    <div class="image-gallery">
+                        <img src="/image/currency/thuan-thien-nguyen-bao-2.jpg" alt="Mặt sau" class="thumbnail" onerror="this.style.display='none'" onclick="swapImage(this)">
+                        <img src="/image/currency/thuan-thien-nguyen-bao-3.jpg" alt="Chi tiết" class="thumbnail" onerror="this.style.display='none'" onclick="swapImage(this)">
+                        <img src="/image/currency/thuan-thien-nguyen-bao-4.jpg" alt="So sánh" class="thumbnail" onerror="this.style.display='none'" onclick="swapImage(this)">
+                    </div>
+                </div>
+                
+                <!-- Info Section -->
+                <div class="info-section">
+                    <h2><i class="fas fa-info-circle"></i> Thông tin chi tiết</h2>
+                    
+                    <div class="info-item">
+                        <div class="info-label">
+                            <i class="fas fa-calendar-alt"></i>
+                            Thời kỳ đúc
+                        </div>
+                        <div class="info-value">
+Tiền Thiệu Trị Thông Bảo (紹治通寶) được đúc dưới triều Nguyễn Thiệu Trị (1841–1847), vị vua thứ ba của nhà Nguyễn. Đồng tiền ra đời nhằm tiếp tục duy trì hệ thống tiền tệ thống nhất, ổn định lưu thông và tài chính trong giai đoạn kinh tế vẫn còn phụ thuộc vào tiền hiện vật và tiền kẽm nhẹ. Xưởng đúc chính đặt tại Phú Xuân (Huế), cùng các xưởng phụ tại Bắc Thành, Gia Định và một số địa phương. Thiệu Trị Thông Bảo nối tiếp Minh Mạng Thông Bảo, vừa phục vụ chi tiêu triều đình, vừa lưu thông rộng trong dân chúng.                        </div>
+                    </div>
+                    
+                    <div class="info-item">
+                        <div class="info-label">
+                            <i class="fas fa-ruler-combined"></i>
+                            Thông số kỹ thuật
+                        </div>
+                        <div class="info-value">
+Đồng tiền tròn, lỗ vuông, chất liệu chủ yếu bằng đồng, một số bản bằng kẽm hoặc hợp kim đồng-kẽm, đường kính khoảng 2,3 – 2,6 cm, trọng lượng 2,5 – 3,4 gram tùy từng xưởng và mẻ đúc. Có nhiều dạng: bản đồng dày, bản đồng mỏng, bản kẽm nhẹ; các xưởng địa phương có thể đúc khác nhau về độ dày và trọng lượng.                        </div>
+                    </div>
+                    
+                    <div class="info-item">
+                        <div class="info-label">
+                            <i class="fas fa-language"></i>
+                            Chữ viết
+                        </div>
+                        <div class="info-value">
+Mặt trước: khắc bốn chữ “紹治通寶” (Thiệu Trị Thông Bảo), bố cục trên – dưới – phải – trái, nét chữ chủ yếu lệ thư hoặc chân thư, vuông vắn, rõ ràng.
+<br>
+Mặt sau: không chữ (loại phổ biến nhất), có chữ “Lục” (六), “Thập” (十) → ký hiệu giá trị hoặc xưởng đúc; một số bản có chữ “Tân”, “Thuận”, “Long” → chỉ xưởng, niên hiệu, hoặc khu vực đúc.                        </div>
+                    </div>
+                    
+                    <div class="info-item">
+                        <div class="info-label">
+                            <i class="fas fa-lightbulb"></i>
+                            Ý nghĩa tên gọi
+                        </div>
+                        <div class="info-value">
+“Thiệu Trị” là niên hiệu của vua Nguyễn Thiệu Trị, biểu thị ý chí tiếp nối chính sách của Minh Mạng, duy trì hòa bình và ổn định. “Thông Bảo” (通寶) nghĩa là “tiền lưu hành chung”, đồng tiền chính thức của quốc gia, dùng trong toàn bộ lãnh thổ Việt Nam.                        </div>
+                    </div>
+                    
+                    <div class="description-box">
+                        <div class="info-label" style="padding-left: 0;">
+                            <i class="fas fa-book-open"></i>
+                            Mô tả và lịch sử
+                        </div>
+                        <p>
+Thiệu Trị Thông Bảo là đồng tiền tiếp nối Minh Mạng Thông Bảo, được đúc để phục vụ thuế khóa, chi tiêu triều đình và giao thương dân gian. Trọng lượng và chất lượng kim loại được duy trì ổn định hơn so với thời Gia Long, nhưng vẫn tồn tại sự khác biệt giữa các xưởng. Đồng tiền này lưu hành song song với tiền ngoại nhập và các loại tiền kẽm nhẹ, phản ánh đặc điểm kinh tế Việt Nam giữa thế kỷ XIX. Trong khảo cổ, Thiệu Trị Thông Bảo thường xuất hiện cùng với Minh Mạng và Tự Đức Thông Bảo, chứng tỏ được sử dụng rộng rãi trong thời gian dài.                        </p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
+    <script>
+        function swapImage(thumbnail) {
+            const mainImg = document.querySelector('.main-image img');
+            if (mainImg && thumbnail.src) {
+                const tempSrc = mainImg.src;
+                mainImg.src = thumbnail.src;
+                thumbnail.src = tempSrc;
+            }
+        }
+    </script>
+</body>
+</html>

@@ -1,0 +1,369 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Khai Nguyên Thông Bảo - Chi tiết</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.1/font/bootstrap-icons.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        body {
+            background: url('/image/homebackground.jpg') no-repeat center center fixed;
+            background-size: cover;
+            min-height: 100vh;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            position: relative;
+            padding: 2rem 0;
+        }
+        
+        body::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.5);
+            z-index: 0;
+        }
+        
+        .container {
+            position: relative;
+            z-index: 1;
+            max-width: 1200px;
+        }
+        
+        .back-button {
+            background: white;
+            color: #DAA520;
+            border: none;
+            padding: 0.8rem 1.5rem;
+            border-radius: 10px;
+            font-weight: 600;
+            text-decoration: none;
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+            transition: all 0.3s ease;
+            margin-bottom: 2rem;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.2);
+        }
+        
+        .back-button:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 6px 20px rgba(0,0,0,0.3);
+            color: #DAA520;
+        }
+        
+        .detail-container {
+            background: white;
+            border-radius: 20px;
+            overflow: hidden;
+            box-shadow: 0 10px 40px rgba(0,0,0,0.3);
+            animation: fadeInUp 0.8s ease-out;
+        }
+        
+        .header-section {
+            background: linear-gradient(135deg, #DAA520 0%, #FFD700 100%);
+            padding: 2.5rem;
+            color: white;
+        }
+        
+        .header-section h1 {
+            font-size: 2.5rem;
+            font-weight: 700;
+            margin-bottom: 0.5rem;
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.2);
+        }
+        
+        .header-section .chinese-name {
+            font-size: 1.8rem;
+            margin-bottom: 1rem;
+            opacity: 0.95;
+        }
+        
+        .header-section .dynasty {
+            font-size: 1.1rem;
+            opacity: 0.9;
+        }
+        
+        .content-section {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 2rem;
+            padding: 2.5rem;
+        }
+        
+        .image-section {
+            position: sticky;
+            top: 2rem;
+            height: fit-content;
+        }
+        
+        .main-image {
+            width: 100%;
+            border-radius: 15px;
+            box-shadow: 0 5px 20px rgba(0,0,0,0.2);
+            background: linear-gradient(135deg, #f5f5f5 0%, #e0e0e0 100%);
+            min-height: 400px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 5rem;
+            color: #ccc;
+        }
+        
+        .main-image img {
+            width: 100%;
+            height: auto;
+            border-radius: 15px;
+        }
+        
+        .image-gallery {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 1rem;
+            margin-top: 1rem;
+        }
+        
+        .thumbnail {
+            width: 100%;
+            aspect-ratio: 1;
+            border-radius: 10px;
+            object-fit: cover;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            border: 3px solid transparent;
+            background: linear-gradient(135deg, #f5f5f5 0%, #e0e0e0 100%);
+        }
+        
+        .thumbnail:hover {
+            border-color: #DAA520;
+            transform: scale(1.05);
+        }
+        
+        .info-section h2 {
+            color: #DAA520;
+            font-size: 1.8rem;
+            font-weight: 700;
+            margin-bottom: 1.5rem;
+            border-bottom: 3px solid #DAA520;
+            padding-bottom: 0.5rem;
+        }
+        
+        .info-item {
+            margin-bottom: 1.5rem;
+        }
+        
+        .info-label {
+            font-weight: 700;
+            color: #333;
+            font-size: 1.1rem;
+            margin-bottom: 0.5rem;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+        
+        .info-label i {
+            color: #DAA520;
+            width: 24px;
+        }
+        
+        .info-value {
+            color: #555;
+            font-size: 1rem;
+            line-height: 1.8;
+            padding-left: 2rem;
+        }
+        
+        .specs-grid {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 1rem;
+            margin-top: 1rem;
+        }
+        
+        .spec-card {
+            background: linear-gradient(135deg, #f8f9fa 0%, #e9ecef 100%);
+            padding: 1rem;
+            border-radius: 10px;
+            border-left: 4px solid #DAA520;
+        }
+        
+        .spec-label {
+            font-size: 0.85rem;
+            color: #666;
+            font-weight: 600;
+            margin-bottom: 0.3rem;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+        
+        .spec-label i {
+            color: #DAA520;
+        }
+        
+        .spec-value {
+            font-size: 1.1rem;
+            color: #333;
+            font-weight: 700;
+        }
+        
+        .description-box {
+            background: linear-gradient(135deg, rgba(218, 165, 32, 0.1) 0%, rgba(255, 215, 0, 0.1) 100%);
+            padding: 1.5rem;
+            border-radius: 10px;
+            border-left: 4px solid #DAA520;
+            margin-top: 1.5rem;
+        }
+        
+        .description-box p {
+            margin: 0;
+            line-height: 1.8;
+            color: #555;
+        }
+        
+        .rarity-stars {
+            color: #FFD700;
+            font-size: 1.2rem;
+        }
+        
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+        
+        @media (max-width: 992px) {
+            .content-section {
+                grid-template-columns: 1fr;
+            }
+            
+            .image-section {
+                position: relative;
+                top: 0;
+            }
+            
+            .header-section h1 {
+                font-size: 2rem;
+            }
+            
+            .header-section .chinese-name {
+                font-size: 1.5rem;
+            }
+            
+            .specs-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <a href="nhanguyen.html" class="back-button">
+            <i class="fas fa-arrow-left"></i> Quay lại danh sách
+        </a>
+         <a href="../index.html" class="back-button" style="margin-left: 53rem;">
+            <i class="bi bi-arrow-left-circle"></i> Home
+        </a>
+        <div class="detail-container">
+            <div class="header-section">
+                <h1>Tự Đức Thông Bảo</h1>
+                <div class="chinese-name">嗣德通寶</div>
+                <div class="dynasty"><i class="fas fa-landmark"></i> Tiền tệ Việt Nam</div>
+            </div>
+            
+            <div class="content-section">
+                <!-- Image Section -->
+                <div class="image-section">
+                    <div class="main-image">
+                        <img src="../image/tự đức thông bảo/tuducthongbao.png" alt="Khai nguyên thông bảo" onerror="this.parentElement.innerHTML='<i class=\'fas fa-coins\'></i>'">
+                    </div>
+                    <div class="image-gallery">
+                        <img src="/image/currency/thuan-thien-nguyen-bao-2.jpg" alt="Mặt sau" class="thumbnail" onerror="this.style.display='none'" onclick="swapImage(this)">
+                        <img src="/image/currency/thuan-thien-nguyen-bao-3.jpg" alt="Chi tiết" class="thumbnail" onerror="this.style.display='none'" onclick="swapImage(this)">
+                        <img src="/image/currency/thuan-thien-nguyen-bao-4.jpg" alt="So sánh" class="thumbnail" onerror="this.style.display='none'" onclick="swapImage(this)">
+                    </div>
+                </div>
+                
+                <!-- Info Section -->
+                <div class="info-section">
+                    <h2><i class="fas fa-info-circle"></i> Thông tin chi tiết</h2>
+                    
+                    <div class="info-item">
+                        <div class="info-label">
+                            <i class="fas fa-calendar-alt"></i>
+                            Thời kỳ đúc
+                        </div>
+                        <div class="info-value">
+Tiền Tự Đức Thông Bảo (嗣德通寶) được đúc dưới triều Nguyễn Tự Đức (1847–1883), vị vua thứ tư của nhà Nguyễn, nối tiếp Thiệu Trị. Thời kỳ Tự Đức đánh dấu giai đoạn ổn định chính trị lâu dài sau gần một thế kỷ thống nhất đất nước, nhưng cũng là thời kỳ nền kinh tế Việt Nam bắt đầu chịu nhiều ảnh hưởng từ thương mại quốc tế, đặc biệt là từ Trung Hoa, Xiêm La và các cảng Hồng Kông, Singapore.
+<br><br>
+Đồng tiền được đúc nhằm đáp ứng nhu cầu chi tiêu triều đình, thu thuế, cống nạp và lưu thông trong dân chúng, đồng thời duy trì sự thống nhất tiền tệ quốc gia sau nhiều năm sử dụng song song các loại tiền kẽm, đồng, bạc và tiền ngoại nhập. Xưởng đúc chính đặt tại Phú Xuân (Huế), bên cạnh các xưởng phụ ở Bắc Thành, Gia Định, cùng nhiều xưởng địa phương khắp miền Bắc và Nam. Trong thời Tự Đức, việc đúc tiền được cải tiến về hình thức và chất lượng, các chữ khắc rõ ràng, khuôn đúc chuẩn hơn, trọng lượng ổn định hơn so với thời Gia Long và Thiệu Trị. Đồng thời, triều đình còn thực hiện một số cải cách lưu hành tiền, cho phép lưu hành tiền cũ nhưng có kiểm soát chất lượng, nhằm củng cố niềm tin của thương nhân và dân chúng.                        </div>
+                    </div>
+                    
+                    <div class="info-item">
+                        <div class="info-label">
+                            <i class="fas fa-ruler-combined"></i>
+                            Thông số kỹ thuật
+                        </div>
+                        <div class="info-value">
+Đồng tiền tròn, lỗ vuông, chất liệu chủ yếu bằng đồng, một số bản bằng kẽm hoặc hợp kim đồng-kẽm, đường kính khoảng 2,3 – 2,6 cm, trọng lượng 2,5 – 3,4 gram tùy từng xưởng và mẻ đúc. Có nhiều dạng: bản đồng dày, bản đồng mỏng, bản kẽm nhẹ; các xưởng địa phương có thể đúc khác nhau về độ dày và trọng lượng.                        </div>
+                    </div>
+                    
+                    <div class="info-item">
+                        <div class="info-label">
+                            <i class="fas fa-language"></i>
+                            Chữ viết
+                        </div>
+                        <div class="info-value">
+Mặt trước: khắc bốn chữ “嗣德通寶” (Tự Đức Thông Bảo), bố cục trên – dưới – phải – trái, nét chữ chủ yếu lệ thư hoặc chân thư, vuông vắn, rõ ràng.
+Mặt sau: không chữ (loại phổ biến nhất), có chữ “Lục” (六), “Thập” (十) → ký hiệu giá trị hoặc xưởng đúc; một số bản có chữ “Tân”, “Thuận”, “Long” → chỉ xưởng, niên hiệu, hoặc khu vực đúc.                        </div>
+                    </div>
+                    
+                    <div class="info-item">
+                        <div class="info-label">
+                            <i class="fas fa-lightbulb"></i>
+                            Ý nghĩa tên gọi
+                        </div>
+                        <div class="info-value">
+“Tự Đức” là niên hiệu của vua Nguyễn Tự Đức, biểu thị ý chí tiếp nối chính sách ổn định, duy trì hòa bình và trật tự quốc gia. “Thông Bảo” (通寶) nghĩa là “tiền lưu hành chung”, đồng tiền chính thức của triều Nguyễn, dùng trong toàn bộ lãnh thổ Việt Nam.                        </div>
+                    </div>
+                    
+                    <div class="description-box">
+                        <div class="info-label" style="padding-left: 0;">
+                            <i class="fas fa-book-open"></i>
+                            Mô tả và lịch sử
+                        </div>
+                        <p>
+Tự Đức Thông Bảo là đồng tiền tiêu chuẩn và phổ biến nhất thời Nguyễn, được lưu hành rộng rãi khắp các vùng miền, từ triều đình tới dân gian. Đồng tiền phục vụ thuế khóa, chi tiêu triều đình, cống nạp và thương mại nội địa, nhưng cũng lưu hành song song với tiền ngoại nhập, tiền kẽm nhẹ và các loại bạc, đồng thời phản ánh sự đa dạng trong nền kinh tế Việt Nam giữa thế kỷ XIX.
+<br><br>
+Trong thời gian đầu, việc trọng lượng và chất lượng chưa hoàn toàn đồng nhất giữa các xưởng khiến triều đình phải giám sát việc đúc và lưu hành để bảo đảm niềm tin thương nhân. Tự Đức Thông Bảo cũng là đồng tiền xuất hiện lâu nhất trong khảo cổ, thường được tìm thấy cùng Gia Long, Minh Mạng, Thiệu Trị Thông Bảo trong các hố chôn tiền thế kỷ XIX, chứng tỏ sử dụng liên tục và phổ biến trong dân chúng, cả trong lưu thông hàng ngày lẫn các giao dịch lớn của triều đình.
+<br><br>
+Ngoài ra, trong thời Tự Đức, việc tiền kẽm nhẹ vẫn lưu hành song song nhằm phục vụ các giao dịch nhỏ trong dân, còn tiền đồng nặng dùng chủ yếu cho chi tiêu chính thức, cống nạp và trao đổi lớn. Đây là giai đoạn tương đối ổn định trong lịch sử tiền tệ Việt Nam trước khi bị ảnh hưởng nặng nề bởi các loại tiền ngoại nhập vào cuối thế kỷ XIX.                        </p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
+    <script>
+        function swapImage(thumbnail) {
+            const mainImg = document.querySelector('.main-image img');
+            if (mainImg && thumbnail.src) {
+                const tempSrc = mainImg.src;
+                mainImg.src = thumbnail.src;
+                thumbnail.src = tempSrc;
+            }
+        }
+    </script>
+</body>
+</html>
